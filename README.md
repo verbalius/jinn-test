@@ -24,5 +24,5 @@ install requirements
 
 ### flask way (DEBUG, not cool way)
 
-	export FLASK_APP=jinn.py
-	flask run
+	(env)$ export FLASK_APP=jinn.py
+	(env)$ flask run
