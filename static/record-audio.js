@@ -50,6 +50,17 @@ function stopRecording() {
 function onRecordingReady(e) {
   var audio = document.getElementById('audio');
   // e.data contains a blob representing the recording
+  var socket = io();             
+  console.log(e.data);
+  
+  var blob = e.data
+  var reader = new FileReader();
+  var base64data
+  reader.onload = function () {
+    var b64 = reader.result.replace(/^data:.+;base64,/, '');
+    socket.emit('audio', b64);
+  };
+  reader.readAsDataURL(blob);
   audio.src = URL.createObjectURL(e.data);
   audio.play();
 }

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>Hear yourself</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <script src="/record-audio.js"></script>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Record yourself</a></h1>
+    <p>Just hear how you sound like</p>
+  </header>
+  <main>
+    <p><button id="record" disabled>Record</button> <button id="stop" disabled>Stop</button></p>
+    <p><audio id="audio" controls></audio></p>
+  </main>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" charset="utf-8">
+      var socket = io();
+      socket.on('connect', function() {
+          socket.emit('message', 'helloworld!');
+      });
+  </script> -->
+</body>
+</html>
