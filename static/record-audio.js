@@ -77,6 +77,7 @@ function onRecordingReady(e) {
   });
 
   socket.on('info', function (res) {
+    console.log(res.status);
     console.log(res);
   });
   
