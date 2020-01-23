@@ -30,6 +30,7 @@ def handle_message(audio_blob_b64):
     my_data_file.close()
     os.chmod(file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IROTH)
     print('written audio to file')
+    emit('info', 'written audio to file')
     file_url = request.url_root+file_name
     print(file_url)
     data_processed_from_api = get_data_from_audd_api(file_url)
