@@ -11,8 +11,9 @@
   
 </head>
 <body>
-
-  <div id="render-container" class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+  <!-- Type 1 Block (Separated Gradient & Solid BG) -->
+  <!-- Step 1 -->
+  <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
     <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="row banner-row-mob align-items-center">
         <img src="img/logo-mob.png" alt="jinn" width="150" height="238" class="moblogo">
@@ -20,6 +21,35 @@
       
     </div>
     <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+      <div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
+        <h3>I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
+        <button class="nice-btn">START</button>
+      </div>
+      
+    </div>  
+  </div>
+
+
+  <!-- Step 2 (choose method) -->
+    <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+      
+    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+      <div class="row banner-row-mob align-items-center">
+        <button id="record">Find by Lyrics</button>
+      </div>  
+    </div> 
+
+    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
+      <div class="row banner-row-mob align-items-center">
+        <button id="record">Sing your song</button>
+      </div>     
+    </div>
+ 
+  </div>
+
+    <!-- Type 2 Block (Solid BG) -->
+  <div id="step3-1" class="render-container">
+    <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="row banner-row-mob"> 
         <div class="d-flex flex-column">
           <div class="row justify-content-between">
@@ -29,15 +59,17 @@
           <div class="row">
             <audio id="audio" controls></audio>
           </div>
-          <div class="row results">
-            <p class="artist">Test Artist (to be updated)</p>
-            <br>
-            <p class="title">Test title (to be updated)</p>
-          </div>
         </div>
         
       </div>
-    </div>  
+    </div>
+  </div>
+
+  <div id="step4">
+    <div class="d-flex flex-column results">
+      <p class="artist">Test Artist (to be updated)</p>
+      <p class="title">Test title (to be updated)</p>
+    </div>
   </div>
 
   <!-- Scripts (asynchronous loading) -->

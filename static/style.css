@@ -24,17 +24,27 @@ button{
   text-transform: uppercase;
 }
 
-#render-container{
+.render-container{
   width: 100vw;
   min-height: 100vh;
 }
-#render-container>.banner{
+.render-container .banner{
   height: 100vh;
   background: linear-gradient(30.02deg, #621AD3 1.47%, #E52372 100%);
 }
-#render-container>.func-area{
+.render-container .func-area{
   background: #1D073D;
 }
 .banner-row-mob{
   height: 50vh
+}
+.fullheight{
+  height: 100vh
+}
+.nice-btn{
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #450F93 0%, #C11664 100%);
+  border-radius: 10px;
+  border: 0;
+  height: 40px;
 }
