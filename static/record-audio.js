@@ -50,7 +50,7 @@ function stopRecording() {
 function onRecordingReady(e) {
   var audio = document.getElementById('audio');
   // e.data contains a blob representing the recording
-  var socket = io();             
+  var socket = io.connect('http://' + document.domain + ':' + location.port);             
   console.log(e.data);
   
   var blob = e.data
