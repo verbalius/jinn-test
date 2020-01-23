@@ -63,16 +63,22 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
-    var parsme = String(res);
-    var result = JSON.pasre(parsme);
-    if (result.status === 'success') {
-      document.getElementsByClassName('artist')[0].innerHTML = result.artist;
-      document.getElementsByClassName('title')[0].innerHTML = result.title;
+    console.log(typeof res);
+    var jzon = res;
+    var jeison = JSON.parse(res);
+    if (jzon.status === 'success') {
+      document.getElementsByClassName('artist')[0].innerHTML = jzon.artist;
+      document.getElementsByClassName('title')[0].innerHTML = jzon.title;
+    }
+    else if (jeison.status === 'success') {
+      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
+      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
     }
     else if (res.status === 'error') {
       document.getElementsByClassName('artist')[0].innerHTML = 'error';
       document.getElementsByClassName('title')[0].innerHTML = 'error';
-    } else {
+    }
+    else {
       document.getElementsByClassName('artist')[0].innerHTML = 'sorry';
       document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
     }
