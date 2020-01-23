@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Styles -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" type="text/css">
   
@@ -14,15 +14,19 @@
   <!-- Type 1 Block (Separated Gradient & Solid BG) -->
   <!-- Step 1 -->
   <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+    <img src="img/lines.svg" alt="jinn" class="jinn-divider">
     <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="row banner-row-mob align-items-center">
-        <img src="img/logo-mob.png" alt="jinn" width="150" height="238" class="moblogo">
+        <div class="flex-column align-items-center justify-content-center">
+          <img class="moblogo" src="img/logo.png" alt="jinn" class="">
+          <h1 class="branding">jinn</span>
+        </div>
       </div>
-      
+
     </div>
     <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
-        <h3>I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
+        <h3>Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
         <button class="nice-btn">START</button>
       </div>
       
@@ -32,7 +36,7 @@
 
   <!-- Step 2 (choose method) -->
     <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
-      
+
     <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="row banner-row-mob align-items-center">
         <button id="record">Find by Lyrics</button>
@@ -48,6 +52,7 @@
   </div>
 
     <!-- Type 2 Block (Solid BG) -->
+    <!-- Step 3-1 (humming search) -->
   <div id="step3-1" class="render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="row banner-row-mob"> 
@@ -59,20 +64,28 @@
           <div class="row">
             <audio id="audio" controls></audio>
           </div>
-          <div class="row results">
-            <p class="artist">Test Artist (to be updated)</p>
-            <br/>
-            <p class="title">Test title (to be updated)</p>
-          </div>
         </div>
+        
       </div>
     </div>
   </div>
 
-  <div id="step4">
-    <div class="d-flex flex-column results">
-      <p class="artist">Test Artist (to be updated)</p>
-      <p class="title">Test title (to be updated)</p>
+  <!-- Step 3-2 (Lyrics Search) -->
+  <div id="step3-2" class="render-container">
+    <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
+      <div class="d-flex flex-column results">
+        <textarea></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 (Results) -->
+  <div id="step4" class="render-container">
+    <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
+      <div class="d-flex flex-column results">
+        <p class="artist">Test Artist (to be updated)</p>
+        <p class="title">Test title (to be updated)</p>
+      </div>
     </div>
   </div>
 

@@ -12,6 +12,7 @@ body *{
   font-family: 'Montserrat', monospace;
   font-size: 1rem;
   color: white;
+  font-weight: normal;
 }
 
 button{
@@ -47,4 +48,45 @@ button{
   border-radius: 10px;
   border: 0;
   height: 40px;
+}
+img.moblogo{
+  width: 200px;
+  height: 200px;
+}
+h1.branding{
+  font-family: 'Poiret One';
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  font-size: 72px;
+      margin-top: 0;
+}
+.rotate {
+  animation: rotation 5s infinite ease-in-out;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.jinn-divider{
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  height: 100vh;
+}
+@media (max-width: 992px){
+  .jinn-divider{
+    transform: rotate(90deg) translate(5%, -41%) scaleX(-1) 
+  }
+  img.moblogo{
+    width: 140px;
+    height: 140px;
+  }
+  h1.branding{
+    font-size: 64px;
 }
