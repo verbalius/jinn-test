@@ -36,7 +36,7 @@ def handle_message(audio_blob_b64):
     data_processed_from_api = get_data_from_audd_api(file_url)
     audio_processing_results_json = json.dumps(data_processed_from_api, indent=4, sort_keys=True)
     emit('info', audio_processing_results_json)
-    emit('audio_results', audio_processing_results_json)
+    #emit('audio_results', audio_processing_results_json)
     os.remove(file_path)
 
 @socketio.on('connect', namespace='/test')
@@ -55,7 +55,7 @@ def get_data_from_audd_api(file_url):
     }
     result = requests.post('https://api.audd.io/recognizeWithOffset/', data=data)
     api_data = json.loads(result.text)
-    emit('info', result.text)
+    emit('audio_results', result.text)
     if api_data['status'] != 'error':
         useful_data = {
             'status': 'success',
