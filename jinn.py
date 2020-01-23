@@ -55,6 +55,7 @@ def get_data_from_audd_api(file_url):
     # result = requests.post('https://api.audd.io/recognizeWithOffset/', data=data)
     result = requests.get('https://api.audd.io/recognizeWithOffset/', data=data)
     api_data = json.loads(result.text)
+    emit('info', result.text)
     if api_data['status'] != 'error' and result.status_code == 200:
         useful_data = {
             'status': 'success',
