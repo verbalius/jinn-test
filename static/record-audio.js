@@ -63,7 +63,11 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
+    console.log(res);
     var audio_res = JSON.parse(res);
+    console.log(audio_res.status);
+    console.log(audio_res.artist);
+    console.log(audio_res.title);
     if (audio_res.status === 'success') {
       document.getElementsByClassName('artist')[0].innerHTML = audio_res.artist;
       document.getElementsByClassName('title')[0].innerHTML = audio_res.title;
