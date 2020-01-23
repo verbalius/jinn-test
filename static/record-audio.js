@@ -63,18 +63,20 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
-    console.log(typeof res);
     var jzon = res;
     var jeison = JSON.parse(res);
     if (jzon.status === 'success') {
+      console.log('jzon');
       document.getElementsByClassName('artist')[0].innerHTML = jzon.artist;
       document.getElementsByClassName('title')[0].innerHTML = jzon.title;
     }
     else if (jeison.status === 'success') {
+      console.log('jeison');
       document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
       document.getElementsByClassName('title')[0].innerHTML = jeison.title;
     }
     else if (res.status === 'error') {
+      console.log('res');
       document.getElementsByClassName('artist')[0].innerHTML = 'error';
       document.getElementsByClassName('title')[0].innerHTML = 'error';
     }
