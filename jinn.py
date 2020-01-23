@@ -34,7 +34,6 @@ def handle_message(audio_blob_b64):
     file_url = request.url_root+file_name
     print(file_url)
     data_processed_from_api = get_data_from_audd_api(file_url)
-    emit('info', data_processed_from_api)
     audio_processing_results_json = json.dumps(data_processed_from_api, indent=4, sort_keys=True)
     emit('info', audio_processing_results_json)
     emit('audio_results', audio_processing_results_json)
@@ -60,8 +59,8 @@ def get_data_from_audd_api(file_url):
     if api_data['status'] != 'error':
         useful_data = {
             'status': 'success',
-            'artist': api_data['result']['artist'],
-            'title': api_data['result']['title']
+            'artist': api_data['result']['list'][0]['artist'],
+            'title': api_data['result']['list'][0]['title']
         }
     else:
         useful_data = {
