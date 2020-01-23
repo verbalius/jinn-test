@@ -50,7 +50,7 @@ function stopRecording() {
 function onRecordingReady(e) {
   var audio = document.getElementById('audio');
   // e.data contains a blob representing the recording
-  var socket = io();             
+  var socket = io.connect('https://' + document.domain + ':' + location.port);             
   console.log(e.data);
   
   var blob = e.data
@@ -63,7 +63,8 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
-    if (res.status==='success') {
+    console.log(res.title)
+    if (res.status === 'success') {
       document.getElementsByClassName('artist')[0].innerHTML = res.artist;
       document.getElementsByClassName('title')[0].innerHTML = res.title;
     }
@@ -71,6 +72,10 @@ function onRecordingReady(e) {
       document.getElementsByClassName('artist')[0].innerHTML = 'error';
       document.getElementsByClassName('title')[0].innerHTML = 'error';
     }
+  });
+
+  socket.on('info', function (res) {
+    console.log(res);
   });
   
   audio.src = URL.createObjectURL(e.data);
