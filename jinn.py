@@ -6,6 +6,7 @@ import json
 import secrets
 import os, stat
 from re import sub
+import ssl
 
 app = Flask(__name__,
             static_url_path='', 
@@ -63,7 +64,7 @@ def get_data_from_audd_api(file_url):
         useful_data = {
             'status' : 'error'
         }
-        
+
     return useful_data
 
 if __name__ == '__main__':
