@@ -63,9 +63,11 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
-    if (res.status === 'success') {
-      document.getElementsByClassName('artist')[0].innerHTML = res.artist;
-      document.getElementsByClassName('title')[0].innerHTML = res.title;
+    var parsme = String(res);
+    var result = JSON.pasre(parsme);
+    if (result.status === 'success') {
+      document.getElementsByClassName('artist')[0].innerHTML = result.artist;
+      document.getElementsByClassName('title')[0].innerHTML = result.title;
     }
     else if (res.status === 'error') {
       document.getElementsByClassName('artist')[0].innerHTML = 'error';
@@ -77,7 +79,6 @@ function onRecordingReady(e) {
   });
 
   socket.on('info', function (res) {
-    console.log(res.status);
     console.log(res);
   });
   
