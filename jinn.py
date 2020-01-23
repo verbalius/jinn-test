@@ -32,7 +32,7 @@ def handle_message(audio_blob_b64):
     file_url = request.url_root+file_name
     print(file_url)
     data_processed_from_api = get_data_from_audd_api(file_url)
-    json.dump(data_processed_from_api, audio_processing_results_json)
+    audio_processing_results_json = json.dumps(data_processed_from_api, indent=4, sort_keys=True)
     emit('audio_results', audio_processing_results_json)
     os.remove(file_path)
 
@@ -63,6 +63,7 @@ def get_data_from_audd_api(file_url):
         useful_data = {
             'status' : 'error'
         }
+        
     return useful_data
 
 if __name__ == '__main__':

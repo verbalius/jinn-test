@@ -61,6 +61,18 @@ function onRecordingReady(e) {
     socket.emit('audio', b64);
   };
   reader.readAsDataURL(blob);
+  
+  socket.on('audio_results', function (res) {
+    if (res.status==='success') {
+      document.getElementsByClassName('artist')[0].innerHTML = res.artist;
+      document.getElementsByClassName('title')[0].innerHTML = res.title;
+    }
+    else{
+      document.getElementsByClassName('artist')[0].innerHTML = 'error';
+      document.getElementsByClassName('title')[0].innerHTML = 'error';
+    }
+  });
+  
   audio.src = URL.createObjectURL(e.data);
   audio.play();
 }
