@@ -64,7 +64,7 @@ function onRecordingReady(e) {
   
   socket.on('audio_results', function (res) {
     var audio_res = JSON.parse(res)
-    if (res.status === 'success') {
+    if (audio_res.status === 'success') {
       document.getElementsByClassName('artist')[0].innerHTML = audio_res.artist;
       document.getElementsByClassName('title')[0].innerHTML = audio_res.title;
     }
