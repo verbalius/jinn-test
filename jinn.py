@@ -20,7 +20,7 @@ def index():
     return render_template('index.html')
 
 @socketio.on('audio')
-def handle_message(audio_blob_b64):
+def handle_audio(audio_blob_b64):
     audio_blob_binary = b64decode(audio_blob_b64)
     file_name = secrets.token_hex(15) + '.ogg'
     file_path = 'static/' + file_name
@@ -31,9 +31,16 @@ def handle_message(audio_blob_b64):
     print('written audio to file')
     file_url = request.url_root+file_name
     print(file_url)
-    data_processed_from_api = get_data_from_audd_api(file_url)
+    data_processed_from_api = get_data_from_audd_api(file_url, 'audio')
     json.dump(data_processed_from_api, audio_processing_results_json)
     emit('audio_results', audio_processing_results_json)
+    os.remove(file_path)
+
+@socketio.on('audio')
+def handle_lyric(lyrics):
+    data_processed_from_api = get_data_from_audd_api(file_url, 'lyrics')
+    json.dump(data_processed_from_api, lyrics_processing_results_json)
+    emit('lyrics_results', lyrics_processing_results_json)
     os.remove(file_path)
 
 @socketio.on('connect', namespace='/test')
@@ -44,14 +51,22 @@ def test_connect():
 def test_disconnect():
     print('Client disconnected')
 
-def get_data_from_audd_api(file_url):
-    data = {
-        'url': file_url,
-        'return': 'apple_music',
-        'api_token': os.environ['AUDD_API']
-    }
-
-    result = requests.post('https://api.audd.io/recognizeWithOffset/', data=data)
+def get_data_from_audd_api(file_url, mode):
+    if mode == 'audio':
+        data = {
+            'url': file_url,
+            'return': 'apple_music',
+            'api_token': os.environ['AUDD_API']
+        }
+        mode_extentsion = 'recognizeWithOffset/'
+    elif mode == 'lyircs':
+        data = {
+            'q': lyrics,
+            'api_token': os.environ['AUDD_API']
+        }
+        mode_extentsion = 'findLyrics/'
+    api_endpoint = 'https://api.audd.io/' + mode_extentsion
+    result = requests.post(api_endpoint, data=data)
     api_data = json.loads(result.text)
     if api_data['status'] != 'error' and result.status_code == 200:
         useful_data = {
