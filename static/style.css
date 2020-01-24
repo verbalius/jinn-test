@@ -24,21 +24,52 @@ button{
   padding: 10px 20px;
   font-size: 1rem;
   text-transform: uppercase;
+ -webkit-transition: .25s ease-in-out 0s;
+ -o-transition: .25s ease-in-out 0s;
  transition: .25s ease-in-out 0s;
 }
- button:hover{
+ button:hover, .scalable-hover:hover{
 cursor: pointer;
-transform: scale(1.2);
+-webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+        transform: scale(1.2);
+}
+.recmethod{
+  display: block;
+      max-width: 80%;
+      margin: auto;
 }
 button:focus, button:active{
   outline: none;
+}
+button.circular{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: -o-linear-gradient(60deg, #621AD3 13.39%, #E52372 86.61%);
+  background: linear-gradient(30deg, #621AD3 13.39%, #E52372 86.61%);
+  border: 1px solid #1D073D;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: block;
+  z-index: 1;
+  text-align: center;
+  padding: 0;
+}
+button.circular#reset{
+  display: none;
+}
+
+button.circular>i{
+  line-height: 50px;
 }
 .render-container{
   width: 100vw;
   min-height: 100vh;
 }
 .render-container .banner{
-  height: 100vh;
+  background: -o-linear-gradient(59.98deg, #621AD3 1.47%, #E52372 100%);
   background: linear-gradient(30.02deg, #621AD3 1.47%, #E52372 100%);
 }
 .render-container .func-area{
@@ -47,11 +78,13 @@ button:focus, button:active{
 .banner-row-mob{
   height: 50vh
 }
-.fullheight{
+.fullheight-kostyl{
   height: 100vh
 }
 .nice-btn{
   padding: 10px 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#450F93), to(#C11664));
+  background: -o-linear-gradient(left, #450F93 0%, #C11664 100%);
   background: linear-gradient(90deg, #450F93 0%, #C11664 100%);
   border-radius: 10px;
   border: 0;
@@ -70,15 +103,29 @@ h1.branding{
       margin-top: 0;
 }
 .rotate {
-  animation: rotation 5s infinite ease-in-out;
+  -webkit-animation: rotation 5s infinite ease-in-out;
+          animation: rotation 5s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }
 
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   to {
-    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
   }
 }
 .jinn-divider{
@@ -86,6 +133,17 @@ h1.branding{
   z-index: 1;
   text-align: center;
   height: 100vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.jinn-divider-mob{
+  width: 100vw;
+  left: 0;
+  position: absolute;
+  top: calc(50vh - 37px);
+  z-index: 1;
 }
 .jinn-step{
   display: none;
@@ -93,19 +151,18 @@ h1.branding{
 .jinn-step.active{
   display: block;
 }
-@media (max-width: 992px){
-  .jinn-divider{
-    transform: rotate(90deg) translate(230%, -42%);
-    height: 100vw
-  }
+@media all and (max-width: 992px){
   img.moblogo{
     width: 140px;
     height: 140px;
   }
   h1.branding{
-    font-size: 64px;}
+    font-size: 64px;
+  }
+  .fullheight-kostyl{
+    height: 50vh
+  }
 }
-
 
 .status p {
   position: absolute;
@@ -133,7 +190,7 @@ h1.branding{
 
 .record-div {
   position: absolute;
-  bottom: 70px;
+  top: 70vh;
   left: 40%;
   width: 20%;
 }
