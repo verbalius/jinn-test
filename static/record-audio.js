@@ -53,9 +53,9 @@ function onRecordingReady(e) {
   var socket = io.connect('https://' + document.domain + ':' + location.port);             
   console.log(e.data);
   
-  var blob = e.data
+  var blob = e.data;
   var reader = new FileReader();
-  var base64data
+  var base64data;
   reader.onload = function () {
     var b64 = reader.result.replace(/^data:.+;base64,/, '');
     socket.emit('audio', b64);
@@ -63,14 +63,26 @@ function onRecordingReady(e) {
   reader.readAsDataURL(blob);
   
   socket.on('audio_results', function (res) {
-    console.log(res.title)
-    if (res.status === 'success') {
-      document.getElementsByClassName('artist')[0].innerHTML = res.artist;
-      document.getElementsByClassName('title')[0].innerHTML = res.title;
+    var jzon = res;
+    var jeison = JSON.parse(res);
+    if (jzon.status === 'success') {
+      console.log('jzon');
+      document.getElementsByClassName('artist')[0].innerHTML = jzon.artist;
+      document.getElementsByClassName('title')[0].innerHTML = jzon.title;
     }
-    else{
+    else if (jeison.status === 'success') {
+      console.log('jeison');
+      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
+      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
+    }
+    else if (res.status === 'error') {
+      console.log('res');
       document.getElementsByClassName('artist')[0].innerHTML = 'error';
       document.getElementsByClassName('title')[0].innerHTML = 'error';
+    }
+    else {
+      document.getElementsByClassName('artist')[0].innerHTML = 'sorry';
+      document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
     }
   });
 
