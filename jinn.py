@@ -6,6 +6,7 @@ import json
 import secrets
 import os, stat
 from re import sub
+import ssl
 
 app = Flask(__name__,
             static_url_path='', 
@@ -29,19 +30,21 @@ def handle_audio(audio_blob_b64):
     my_data_file.close()
     os.chmod(file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IROTH)
     print('written audio to file')
+    emit('info', 'written audio to file')
     file_url = request.url_root+file_name
     print(file_url)
     data_processed_from_api = get_data_from_audd_api(file_url, 'audio')
-    json.dump(data_processed_from_api, audio_processing_results_json)
-    emit('audio_results', audio_processing_results_json)
+    processing_results_json = json.dumps(data_processed_from_api)
+    emit('info', processing_results_json)
+    emit('audio_results', processing_results_json)
     os.remove(file_path)
 
-@socketio.on('audio')
+@socketio.on('lyrics')
 def handle_lyric(lyrics):
     data_processed_from_api = get_data_from_audd_api(file_url, 'lyrics')
-    json.dump(data_processed_from_api, lyrics_processing_results_json)
-    emit('lyrics_results', lyrics_processing_results_json)
-    os.remove(file_path)
+    processing_results_json = json.dumps(data_processed_from_api)
+    emit('info', processing_results_json)
+    emit('lyrics_results', processing_results_json)
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
@@ -68,16 +71,17 @@ def get_data_from_audd_api(file_url, mode):
     api_endpoint = 'https://api.audd.io/' + mode_extentsion
     result = requests.post(api_endpoint, data=data)
     api_data = json.loads(result.text)
-    if api_data['status'] != 'error' and result.status_code == 200:
+    if api_data['status'] != 'error':
         useful_data = {
             'status': 'success',
-            'artist': api_data['result']['artist'],
-            'title': api_data['result']['title']
+            'artist': api_data['result']['list'][0]['artist'],
+            'title': api_data['result']['list'][0]['title']
         }
     else:
         useful_data = {
             'status' : 'error'
         }
+
     return useful_data
 
 if __name__ == '__main__':
