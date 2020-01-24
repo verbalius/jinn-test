@@ -24,8 +24,15 @@ button{
   padding: 10px 20px;
   font-size: 1rem;
   text-transform: uppercase;
+ transition: .25s ease-in-out 0s;
 }
-
+ button:hover{
+cursor: pointer;
+transform: scale(1.2);
+}
+button:focus, button:active{
+  outline: none;
+}
 .render-container{
   width: 100vw;
   min-height: 100vh;
@@ -80,12 +87,16 @@ h1.branding{
   text-align: center;
   height: 100vh;
 }
-#Step2, #step3-1, #step3-2, #step4{
+.jinn-step{
   display: none;
+}
+.jinn-step.active{
+  display: block;
 }
 @media (max-width: 992px){
   .jinn-divider{
-    transform: rotate(90deg) translate(5%, -41%) scaleX(-1) 
+    transform: rotate(90deg) translate(230%, -42%);
+    height: 100vw
   }
   img.moblogo{
     width: 140px;

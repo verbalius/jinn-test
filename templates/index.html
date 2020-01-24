@@ -14,53 +14,55 @@
 <body>
   <!-- Type 1 Block (Separated Gradient & Solid BG) -->
   <!-- Step 1 -->
-  <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
-    <img src="img/lines.svg" alt="jinn" class="jinn-divider">
-    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
-      <div class="row banner-row-mob align-items-center">
-        <div class="flex-column align-items-center justify-content-center">
-          <img class="moblogo" src="img/logo.png" alt="jinn" class="">
-          <h1 class="branding">jinn</span>
-        </div>
-      </div>
-
+  <div id="Step1" class="jinn-step active render-container">  
+  	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">  		
+  		<img src="img/lines.svg" alt="jinn" class="jinn-divider">
+	    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
+	      <div class="row banner-row-mob align-items-center">
+	        <div class="flex-column align-items-center justify-content-center">
+	          <img class="moblogo" src="img/logo.png" alt="jinn" class="">
+	          <h1 class="branding">jinn</h1>
+	        </div>
+	      </div>
+		</div>
+	    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+			<div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
+				<h3>Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
+				<button class="nice-btn" id="tostep2">START</button>
+			</div> 
+	    </div>
     </div>
-    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
-      <div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
-        <h3>Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
-        <button class="nice-btn" id="step1ok">START</button>
-      </div>
-      
-    </div>  
   </div>
 
 
   <!-- Step 2 (choose method) -->
-    <div id="Step2" class="render-container flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+    <div id="Step2" class="jinn-step render-container">
+    	
+    	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+			<img src="img/lines.svg" alt="jinn" class="jinn-divider" style="transform: scaleX(-1);">
+		    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+		      <div class="row banner-row-mob align-items-center">
+		        <button id="tostep32">Find by Lyrics</button>
+		      </div>  
+		    </div> 
 
-    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
-      <div class="row banner-row-mob align-items-center">
-        <button id="tostep32">Find by Lyrics</button>
-      </div>  
-    </div> 
-
-    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
-      <div class="row banner-row-mob align-items-center">
-        <button id="tostep31">Sing your song</button>
-      </div>     
-    </div>
- 
-  </div>
+		    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
+		      <div class="row banner-row-mob align-items-center">
+		        <button id="tostep31">Sing your song</button>
+		      </div>     
+		    </div>
+	    </div>
+  	</div>
 
     <!-- Type 2 Block (Solid BG) -->
     <!-- Step 3-1 (humming search) -->
-  <div id="step3-1" class="render-container">
+  <div id="Step31" class="jinn-step render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="row banner-row-mob"> 
         <div class="d-flex flex-column">
           <div class="row justify-content-between">
             <button id="record">Record</button>
-            <button id="stop">Stop</button>
+            <button id="stop" onclick="toStep(4);">Stop</button>
           </div>
           <div class="row">
             <audio id="audio" controls></audio>
@@ -72,7 +74,7 @@
   </div>
 
   <!-- Step 3-2 (Lyrics Search) -->
-  <div id="step3-2" class="render-container">
+  <div id="Step32" class="jinn-step render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="d-flex flex-column results">
         <textarea></textarea>
@@ -81,7 +83,7 @@
   </div>
 
   <!-- Step 4 (Results) -->
-  <div id="step4" class="render-container">
+  <div id="Step4" class="jinn-step render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="d-flex flex-column results">
         <p class="artist">Test Artist (to be updated)</p>
@@ -92,10 +94,7 @@
 
   <!-- Scripts (asynchronous loading) -->
   <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script defer
-    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-    crossorigin="anonymous"></script>
+  <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
   <script defer src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
   <script defer src="record-audio.js"></script>
   <script defer src="scripts.js"></script>
