@@ -7,16 +7,18 @@
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" type="text/css">
-  <link rel="stylesheet" href="animate.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" type="text/css">
-  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
+  <button class="circular" id="reset" onclick="toStep(1);"><i class="material-icons">close</i></button>
   <!-- Type 1 Block (Separated Gradient & Solid BG) -->
   <!-- Step 1 -->
   <div id="Step1" class="jinn-step active render-container">  
   	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">  		
-  		<img src="img/lines.svg" alt="jinn" class="jinn-divider">
+  		<img src="img/lines.svg" alt="jinn" class="jinn-divider d-none d-lg-block">
+      <img src="img/linesmob.svg" alt="jinn" class="jinn-divider-mob d-block d-lg-none">
 	    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
 	      <div class="row banner-row-mob align-items-center">
 	        <div class="flex-column align-items-center justify-content-center">
@@ -39,7 +41,8 @@
     <div id="Step2" class="jinn-step render-container">
     	
     	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
-			<img src="img/lines.svg" alt="jinn" class="jinn-divider" style="transform: scaleX(-1);">
+			<img src="img/lines.svg" alt="jinn" class="jinn-divider d-none d-lg-block" style="transform: scaleX(-1);">
+      <img src="img/linesmob.svg" alt="jinn" class="jinn-divider-mob d-block d-lg-none" style="transform: scaleY(-1);">
 		    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
 		      <div class="row banner-row-mob align-items-center">
 		        <button id="tostep32">Find by Lyrics</button>
