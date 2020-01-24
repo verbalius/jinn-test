@@ -73,7 +73,7 @@ button.circular>i{
 .banner-row-mob{
   height: 50vh
 }
-.fullheight{
+.fullheight-kostyl{
   height: 100vh
 }
 .nice-btn{
@@ -128,154 +128,14 @@ h1.branding{
   z-index: 1;
   text-align: center;
   height: 100vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 .jinn-divider-mob{
-  width: 104vw;
-  left: -2vw;
-  position: absolute;
-  top: calc(50vh - 37px);
-  z-index: 1;
-}
-.jinn-step{
-  display: none;
-}
-.jinn-step.active{
-  display: block;
-}html, body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: visible;
-  background: #1D073D
-}
-
-body{
-  margin: 0;
-}
-
-body *{
-  font-family: 'Montserrat', monospace;
-  font-size: 1rem;
-  color: white;
-  font-weight: normal;
-}
-
-button{
-  color: #fff;
-  background:transparent;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  text-transform: uppercase;
- -webkit-transition: .25s ease-in-out 0s;
- -o-transition: .25s ease-in-out 0s;
- transition: .25s ease-in-out 0s;
-}
- button:hover, .scalable-hover:hover{
-cursor: pointer;
--webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-        transform: scale(1.2);
-}
-img.recmethod{
-  max-width: 80%;
-  display: block;
-  margin: auto;
-}
-button:focus, button:active{
-  outline: none;
-}
-button.circular{
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: -o-linear-gradient(60deg, #621AD3 13.39%, #E52372 86.61%);
-  background: linear-gradient(30deg, #621AD3 13.39%, #E52372 86.61%);
-  border: 1px solid #1D073D;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: block;
-  z-index: 1;
-  text-align: center;
-  padding: 0;
-}
-button.circular#reset{
-  display: none;
-}
-
-button.circular>i{
-  line-height: 50px;
-}
-.render-container{
   width: 100vw;
-  min-height: 100vh;
-}
-.render-container .func-area{
-  background: #1D073D;
-}
-.banner-row-mob{
-  height: 50vh
-}
-.fullheight{
-  height: 100vh
-}
-.nice-btn{
-  padding: 10px 20px;
-  background: -webkit-gradient(linear, left top, right top, from(#450F93), to(#C11664));
-  background: -o-linear-gradient(left, #450F93 0%, #C11664 100%);
-  background: linear-gradient(90deg, #450F93 0%, #C11664 100%);
-  border-radius: 10px;
-  border: 0;
-  height: 40px;
-}
-img.moblogo{
-  width: 200px;
-  height: 200px;
-}
-h1.branding{
-  font-family: 'Poiret One';
-  color: #fff;
-  font-weight: 400;
-  text-align: center;
-  font-size: 72px;
-      margin-top: 0;
-}
-.rotate {
-  -webkit-animation: rotation 5s infinite ease-in-out;
-          animation: rotation 5s infinite ease-in-out;
-}
-
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
-@keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-.jinn-divider{
-  position: absolute;
-  z-index: 1;
-  text-align: center;
-  height: 100vh;
-}
-.jinn-divider-mob{
-  width: 104vw;
-  left: -2vw;
+  left: 0;
   position: absolute;
   top: calc(50vh - 37px);
   z-index: 1;
@@ -286,7 +146,6 @@ h1.branding{
 .jinn-step.active{
   display: block;
 }
-
 @media all and (max-width: 992px){
   img.moblogo{
     width: 140px;
@@ -294,4 +153,8 @@ h1.branding{
   }
   h1.branding{
     font-size: 64px;
+  }
+  .fullheight-kostyl{
+    height: 50vh
+  }
 }

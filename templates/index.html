@@ -16,7 +16,7 @@
   <!-- Type 1 Block (Separated Gradient & Solid BG) -->
   <!-- Step 1 -->
   <div id="Step1" class="jinn-step active render-container">  
-  	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-stretch align-items-lg-stretch">  		
+  	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-stretch align-items-lg-stretch fullheight-kostyl">  		
   		<img src="img/lines.svg" alt="jinn" class="jinn-divider d-none d-lg-block">
       <img src="img/linesmob.svg" alt="jinn" class="jinn-divider-mob d-block d-lg-none">
 	    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
@@ -28,8 +28,8 @@
 	      </div>
 		</div>
 	    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
-			<div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
-				<h3>Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
+			<div class="banner-row-mob d-flex flex-column align-items-center justify-content-center pl-lg-5">
+				<h3 style="text-align: center;">Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
 				<button class="nice-btn" id="tostep2">START</button>
 			</div> 
 	    </div>
@@ -81,7 +81,7 @@
         <div class="d-flex flex-column">
           <div class="row justify-content-between">
             <button id="record">Record</button>
-            <button id="stop" onclick="toStep(4);">Stop</button>
+            <button id="stop">Stop</button>
           </div>
           <div class="row">
             <audio id="audio" controls></audio>

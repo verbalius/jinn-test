@@ -50,46 +50,18 @@ function stopRecording() {
 function onRecordingReady(e) {
   var audio = document.getElementById('audio');
   // e.data contains a blob representing the recording
-  var socket = io.connect('https://' + document.domain + ':' + location.port);             
+  var socket = io();             
   console.log(e.data);
   
-  var blob = e.data;
+  var blob = e.data
   var reader = new FileReader();
-  var base64data;
+  var base64data
   reader.onload = function () {
     var b64 = reader.result.replace(/^data:.+;base64,/, '');
     socket.emit('audio', b64);
   };
   reader.readAsDataURL(blob);
-  
-  socket.on('audio_results', function (res) {
-    var jzon = res;
-    var jeison = JSON.parse(res);
-    if (jzon.status === 'success') {
-      console.log('jzon');
-      document.getElementsByClassName('artist')[0].innerHTML = jzon.artist;
-      document.getElementsByClassName('title')[0].innerHTML = jzon.title;
-    }
-    else if (jeison.status === 'success') {
-      console.log('jeison');
-      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
-      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
-    }
-    else if (res.status === 'error') {
-      console.log('res');
-      document.getElementsByClassName('artist')[0].innerHTML = 'error';
-      document.getElementsByClassName('title')[0].innerHTML = 'error';
-    }
-    else {
-      document.getElementsByClassName('artist')[0].innerHTML = 'sorry';
-      document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
-    }
-  });
-
-  socket.on('info', function (res) {
-    console.log(res);
-  });
-  
   audio.src = URL.createObjectURL(e.data);
-  audio.play();
+  // audio.play();
+  toStep(4);
 }
