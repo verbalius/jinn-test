@@ -2,6 +2,7 @@ html, body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: visible;
+  background: #1D073D
 }
 
 body{
@@ -78,6 +79,9 @@ h1.branding{
   z-index: 1;
   text-align: center;
   height: 100vh;
+}
+#Step2, #step3-1, #step3-2, #step4{
+  display: none;
 }
 @media (max-width: 992px){
   .jinn-divider{

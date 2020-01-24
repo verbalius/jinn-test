@@ -7,6 +7,7 @@
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="animate.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" type="text/css">
   
 </head>
@@ -27,7 +28,7 @@
     <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="banner-row-mob d-flex flex-column align-items-center justify-content-center">
         <h3>Hi! I can guess songs if you try to sing them to me, or just find music by its lyrics.</h3>
-        <button class="nice-btn">START</button>
+        <button class="nice-btn" id="step1ok">START</button>
       </div>
       
     </div>  
@@ -35,17 +36,17 @@
 
 
   <!-- Step 2 (choose method) -->
-    <div id="Step1" class="render-container d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+    <div id="Step2" class="render-container flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
 
     <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="row banner-row-mob align-items-center">
-        <button id="record">Find by Lyrics</button>
+        <button id="tostep32">Find by Lyrics</button>
       </div>  
     </div> 
 
     <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
       <div class="row banner-row-mob align-items-center">
-        <button id="record">Sing your song</button>
+        <button id="tostep31">Sing your song</button>
       </div>     
     </div>
  
@@ -90,9 +91,14 @@
   </div>
 
   <!-- Scripts (asynchronous loading) -->
-  <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script defer
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
   <script defer src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
   <script defer src="record-audio.js"></script>
+  <script defer src="scripts.js"></script>
   
 </body>
 </html>
