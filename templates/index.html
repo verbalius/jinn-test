@@ -38,24 +38,40 @@
 
 
   <!-- Step 2 (choose method) -->
-    <div id="Step2" class="jinn-step render-container">
-    	
-    	<div class="d-flex flex-column flex-lg-row justify-content-start justify-content-lg-center align-items-lg-stretch">
+  <div id="Step2" class="jinn-step render-container">
+  	<!-- Mobile version -->
+  	<div class="d-flex d-lg-none flex-column justify-content-start">
 			<img src="img/lines.svg" alt="jinn" class="jinn-divider d-none d-lg-block" style="transform: scaleX(-1);">
       <img src="img/linesmob.svg" alt="jinn" class="jinn-divider-mob d-block d-lg-none" style="transform: scaleY(-1);">
-		    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
-		      <div class="row banner-row-mob align-items-center">
-		        <button id="tostep32">Find by Lyrics</button>
-		      </div>  
-		    </div> 
+	    <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+	      <div class="row banner-row-mob align-items-center">
+	        <button id="tostep32">Find by Lyrics</button>
+	      </div>  
+	    </div> 
 
-		    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
-		      <div class="row banner-row-mob align-items-center">
-		        <button id="tostep31">Sing your song</button>
-		      </div>     
-		    </div>
+	    <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
+	      <div class="row banner-row-mob align-items-center">
+	        <button id="tostep31">Sing your song</button>
+	      </div>     
 	    </div>
-  	</div>
+    </div>
+    <!-- PC version -->
+    <div class="func-area col-12 d-lg-flex flex-column justify-content-around align-items-center fullheight">
+      <div class="row" style="margin: 10px 0 30px 0;">
+        <img src="img/logowhite.png" class="rotate" alt="jinn:" width="108" height="100">
+        <h2 style="font-size: 2rem;line-height: 100px;margin: 0 0 0 30px;">Let's begin!</h2>
+      </div>
+      <div class="row">
+        <span class="caption">How would you like me to guess your song?</span>
+      </div>
+      <div class="row align-items-center pt-2 pb-5">
+        <div class="col-6"><img class="scalable-hover recmethod" src="img/lyricsearch.png" alt="lyrics" onclick="toStep(31);" /></div>
+        <div class="col-6"><img class="scalable-hover recmethod" src="img/micsearch.png" alt="audio/voice" onclick="toStep(32);" /></div>
+      </div>
+    </div>
+
+
+	</div>
 
     <!-- Type 2 Block (Solid BG) -->
     <!-- Step 3-1 (humming search) -->
