@@ -28,11 +28,16 @@ button{
  -o-transition: .25s ease-in-out 0s;
  transition: .25s ease-in-out 0s;
 }
- button:hover{
+ button:hover, .scalable-hover:hover{
 cursor: pointer;
 -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
         transform: scale(1.2);
+}
+.recmethod{
+  display: block;
+      max-width: 80%;
+      margin: auto;
 }
 button:focus, button:active{
   outline: none;
