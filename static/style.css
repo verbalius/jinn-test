@@ -163,3 +163,57 @@ h1.branding{
     height: 50vh
   }
 }
+
+.status p {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+}
+
+
+.wave {
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  height: 60vh;
+  width: 100%;
+  background-color: transparent;
+}
+
+.wave canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.record-div {
+  position: absolute;
+  top: 70vh;
+  left: 40%;
+  width: 20%;
+}
+
+.record-div button {
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  margin: 0px 30px;
+  border: 1px solid #1D073D;
+  background: linear-gradient(#E52372, #621AD3);
+  box-shadow: 0 0 20px rgba(98,26,211, .6); 
+  padding: 0;
+}
+
+.record-div svg {
+  fill: white;
+}
+
+#timer {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+}
+
+#timer span {font-size: 24px;}
