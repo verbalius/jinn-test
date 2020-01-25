@@ -73,7 +73,7 @@ function onRecordingReady(e) {
   
   socket.on('api_results', function (res) {
     var jeison = JSON.parse(res);
-    else if (jeison.status === 'success') {
+    if (jeison.status === 'success') {
       document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
       document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
       album_img.src = jeison.album;
