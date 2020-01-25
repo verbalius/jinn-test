@@ -59,7 +59,8 @@ function onRecordingReady(e) {
   var audio = document.getElementById('preview');
   var album = document.getElementsByClassName('album_img');
   // e.data contains a blob representing the recording
-  var socket = io.connect('https://' + document.domain + ':' + location.port);             
+  var socket = io.connect();             
+  console.log('[+] Sending audio')
   console.log(e.data);
   
   var blob = e.data;
