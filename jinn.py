@@ -77,15 +77,19 @@ def get_data_from_audd_api(mode, file_url='', lyrics=''):
         if mode == 'lyrics':
             deezer_data =  get_track_from_deezer(api_data['result'][0]['artist'],
                                                  api_data['result'][0]['title'])
+            artist = api_data['result'][0]['artist']
+            title = api_data['result'][0]['title']
         elif mode == 'audio':
             deezer_data =  get_track_from_deezer(api_data['result']['list'][0]['artist'],
                                                  api_data['result']['list'][0]['title'])
+            artist = api_data['result']['list'][0]['title']
+            title = api_data['result']['list'][0]['title']
         emit('debug', '[+] Deezer data')
         emit('debug', deezer_data)
         useful_data = {
             'status': 'success',
-            'artist': api_data['result']['list'][0]['artist'],
-            'title': api_data['result']['list'][0]['title'],
+            'artist': artist,
+            'title': title,
             'preview': deezer_data['preview'],
             'album': deezer_data['album']
         }
