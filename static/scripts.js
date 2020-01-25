@@ -405,5 +405,5 @@ function onRecordingReady(e) {
 
 
 function stopAudio(){
-  document.getElementById('audio-preview').stop();
+  document.getElementById('audio-preview').pause();
 }
