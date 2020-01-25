@@ -221,6 +221,10 @@ h1.branding{
   fill: white;
 }
 
+.stop-button svg {
+  fill: white;
+}
+
 #timer {
   text-align: center;
   width: 100%;
