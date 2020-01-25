@@ -206,7 +206,26 @@ async function run_timer() {
   }
 }
 
+async function run_loader_text() {
+  while (true) {
+    $("#loader-text").text("Loading.");
+    await sleep(1000);
+    $("#loader-text").text("Loading..");
+    await sleep(1000);
+    $("#loader-text").text("Loading...");
+    await sleep(1000);
+  }
+}
+
+run_loader_text();
+
 $(document).ready(function(){
+  // for preloader
+   setTimeout(function(){
+        $('#loader').fadeOut(300);
+    }, 5000);
+
+
   $("#stop").hide();
   $("#replay").hide();
   $("#done").hide();
@@ -273,3 +292,5 @@ $(window).resize(function() {
     }
   }
 });
+
+

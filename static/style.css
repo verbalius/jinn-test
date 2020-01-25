@@ -291,3 +291,21 @@ textarea {
 .result-btn.no{
   background-color: #E52372
 }
+
+
+/** LOADER **/
+#loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1D073D;
+  z-index: 1001;
+}
+
+#loader img {
+  animation-name: rotation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
