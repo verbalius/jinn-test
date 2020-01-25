@@ -402,3 +402,8 @@ function onRecordingReady(e) {
   };
   reader.readAsDataURL(blob);
 }
+
+
+function stopAudio(){
+  document.getElementById('audio-preview').stop();
+}
