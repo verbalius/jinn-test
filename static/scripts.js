@@ -1,8 +1,41 @@
 jQuery(function($){
+
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
   $('button#reset').click(()=>{$('button#reset').hide();});
+
+  // Handle Results from API
+  socket.on('info', function (res) {
+    var jzon = res;
+    var jeison = JSON.parse(res);
+    if (jzon.status === 'success') {
+      console.log('jzon');
+      if (typeof jzon.artist !== 'undefined')
+        $('.artist-result').text(jzon.artist);
+      if (typeof jzon.title !== 'undefined')
+        $('.title-result').text(jzon.title);
+    }
+    else if (jeison.status === 'success') {
+      console.log('jeison');
+      if (typeof jeison.artist !== 'undefined')
+        $('.artist-result').text(jeison.artist);
+      if (typeof jeison.title !== 'undefined')
+        $('.title-result').text(jeison.title);
+      if (typeof jeison.album !== 'undefined')
+        $('.album-result').text(jeison.title);
+    }
+    else if (res.status === 'error') {
+      console.log('res');
+      $('.artist-result').text('error');
+      $('.title').text('error');
+    }
+    else {
+      $('.artist-result').text('sorry');
+      $('.title-result').text(' I\'ve crashed');
+    }
+  });
+
 });
 function toStep(num){
   let selector = '#Step'+num;
@@ -213,7 +246,7 @@ $(document).ready(function(){
 
       draw_waves(60);
 
-      $(".status").find("p").text("Слухаю...");
+      $(".status").find("p").text("Listening...");
 
       run_timer();
     } else {
@@ -223,7 +256,7 @@ $(document).ready(function(){
 
   $("#stop").click(function() {
     $(this).hide();
-    $(".status").find("p").text("Готово!");
+    $(".status").find("p").text("Done!");
     $("#replay").show();
     $("#done").show();
     check_if_done = true;
