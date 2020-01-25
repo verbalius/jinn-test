@@ -118,7 +118,7 @@ def get_track_from_deezer(artist, title):
     response = requests.request("GET", url, params=querystring)
     if response.status_code == 200:
         api_data = json.loads(response.text)
-        if len(api_data['data']) != 0:
+        if len(api_data['data']) == 0:
             links = {
                 'preview': 'not found', 
                 'album': 'not found'
