@@ -162,6 +162,8 @@ h1.branding{
   .fullheight-kostyl{
     height: 50vh
   }
+
+  textarea { width: 80% !important };
 }
 
 .status p {
@@ -217,3 +219,17 @@ h1.branding{
 }
 
 #timer span {font-size: 24px;}
+
+textarea {
+  width: 40vw;
+  margin: 70px 24px;
+  height: 40vh;
+  background: linear-gradient(#E52372, #621AD3);
+  padding: 24px;
+  font-size: 24px;
+  text-align: center;
+  border: 1px solid #1D073D;
+  border-radius: 20px;
+  resize: none;
+  outline: none;
+}
