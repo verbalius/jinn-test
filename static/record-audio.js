@@ -57,7 +57,7 @@ function stopRecording() {
 
 function onRecordingReady(e) {
   var audio = document.getElementById('preview');
-  var album = document,getElementsByClassName('album_img');
+  var album = document.getElementsByClassName('album_img');
   // e.data contains a blob representing the recording
   var socket = io.connect('https://' + document.domain + ':' + location.port);             
   console.log(e.data);
