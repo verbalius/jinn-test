@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" type="text/css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div id="loader">
@@ -145,9 +146,9 @@
               <p class="artist-results"></p>
             </div>
             <div class="col-2" style="padding: 0;">
-              <button class="circular play-preview">
+              <button class="circular play-preview" onclick="audio.stop();">
                 <i class="material-icons">
-                play_arrow
+                stop_arrow
                 </i>
               </button>
             </div>
