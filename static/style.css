@@ -163,7 +163,13 @@ h1.branding{
     height: 50vh
   }
 
-  textarea { width: 80% !important };
+  textarea { width: 80% !important; }
+
+  .result-btn {
+    width: 140px !important;
+    height: 60px !important;
+    font-size: 16px !important;
+  }
 }
 
 .status p {
@@ -232,4 +238,29 @@ textarea {
   border-radius: 20px;
   resize: none;
   outline: none;
+}
+
+.result-score, .result-score span {
+  font-size: 36px;
+  font-style: bold;
+}
+
+.result-btn {
+  font-size: 20px;
+  width: 180px;
+  height: 80px;
+  background: #E52372;
+  border: none;
+  border-radius: 95px;
+  text-transform: none;
+  margin: 0px 24px;
+}
+
+.result-btn:nth-of-type(2) {
+  background: #621AD3;
+}
+
+.robot-img {
+  width: 100px;
+  height: 84px;
 }
