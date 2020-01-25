@@ -83,7 +83,7 @@ function onRecordingReady(e) {
     if (jeison.status === 'success') {
       document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
       document.getElementsByClassName('title')[0].innerHTML = jeison.title;
-      album_img.src = jeison.album;
+      album.src = jeison.album;
       audio.src = jeison.preview;
       audio.play();
     }
