@@ -12,7 +12,10 @@ jQuery(function($){
     $('#loader').fadeIn(300);
   });
   $('button#reset').click(()=>{$('button#reset').hide();});
-
+  $('.rec-audio').click(()=>{
+    recordAudio();
+    toStep(31);
+  });
 });
 function toStep(num){
   let selector = '#Step'+num;
