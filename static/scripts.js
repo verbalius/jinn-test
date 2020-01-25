@@ -39,19 +39,19 @@ socket.on('api_results', function (res) {
   console.log(res)
   var jeison = JSON.parse(res);
   if (jeison.status === 'success') {
-    document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
-    document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
-    document.getElementById('album-preview').style.backgroundImage = "url('"+jeison.album+"')";
-    document.getElementById('audio-preview').src = jeison.preview;
+    $('.artist-results').text(jeison.artist);
+    $('.title-results').text(jeison.title);
+    $('#album-preview').css('background-image', "url('"+jeison.album+"')");
+    $('#audio-preview').attr('src', jeison.preview);
     document.getElementById('audio-preview').play();
   }
   else if (jeison.status === 'error') {
-    document.getElementsByClassName('artist-results')[0].innerHTML = 'Not found';
-    document.getElementsByClassName('title-results')[0].innerHTML = 'Sorry';
+    $('.artist-results').text('Not Found');
+    $('.title-results').text('Sorry :(');
   }
   else {
-    document.getElementsByClassName('artist-results')[0].innerHTML = 'Sorry';
-    document.getElementsByClassName('title-results')[0].innerHTML = ' I\'ve crashed';
+    $('.artist-results').text('Internal Error');
+    $('.title-results').text('Sorry :(');
   }
   $('#loader').fadeOut(300);
   toStep(4);
