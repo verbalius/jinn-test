@@ -106,8 +106,12 @@
   <!-- Step 3-2 (Lyrics Search) -->
   <div id="Step32" class="jinn-step render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
-      <div class="d-flex flex-column results">
+      <div class="d-flex flex-column results justify-content-center align-items-center">
+        <p style="width: 100%; text-align: center; font-size: 24px; margin-top: 70px;">Введи текст пісні!</p>
         <textarea></textarea>
+        <div class="d-flex justify-content-center record-div mt-5">
+          <button id="submit-lyrics" onclick="toStep(4);"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></button>
+        </div>
       </div>
     </div>
   </div>
