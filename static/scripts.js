@@ -1,8 +1,10 @@
 jQuery(function($){
+
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
   $('button#reset').click(()=>{$('button#reset').hide();});
+
 });
 function toStep(num){
   let selector = '#Step'+num;
@@ -205,21 +207,25 @@ $(document).ready(function(){
   $("#done").hide();
 
   $("#record").click(function() {
-    $(this).hide();
-    $("#replay").hide();
-    $("#done").hide();
-    $("#stop").show();
+    if (record_permission) {
+      $(this).hide();
+      $("#replay").hide();
+      $("#done").hide();
+      $("#stop").show();
 
-    draw_waves(60);
+      draw_waves(60);
 
-    $(".status").find("p").text("Слухаю...");
+      $(".status").find("p").text("Listening...");
 
-    run_timer();
+      run_timer();
+    } else {
+      alert("Please, allow microphone permission first!");
+    }
   });
 
   $("#stop").click(function() {
     $(this).hide();
-    $(".status").find("p").text("Готово!");
+    $(".status").find("p").text("Done!");
     $("#replay").show();
     $("#done").show();
     check_if_done = true;

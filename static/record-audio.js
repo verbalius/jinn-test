@@ -11,6 +11,7 @@
 // URL.createObjectURL -> to create a URL from a blob, which we can use as audio src
 
 var recordButton, stopButton, recorder;
+var record_permission = false;
 
 window.onload = function () {
   recordButton = document.getElementById('record');
@@ -21,18 +22,25 @@ window.onload = function () {
   })
   // get audio stream from user's mic
   .then(function (stream) {
+    record_permission = true;
     recordButton.disabled = false;
     recordButton.addEventListener('click', startRecording);
     stopButton.addEventListener('click', stopRecording);
     var options;
-    recorder = new MediaRecorder(stream);
+    recorder = new MediaRecorder(stream); 
     // listen to dataavailable, which gets triggered whenever we have
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
+  }).catch(function(err) {
+    record_permission = false;
   });
 };
 
 function startRecording() {
+  if (!record_permission) {
+    alert("Please, allow microphone first!");
+    return;
+  }
   recordButton.disabled = true;
   stopButton.disabled = false;
 
@@ -66,19 +74,19 @@ function onRecordingReady(e) {
   socket.on('api_results', function (res) {
     var jeison = JSON.parse(res);
     else if (jeison.status === 'success') {
-      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
-      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
+      document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
+      document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
       album_img.src = jeison.album;
       audio.src = jeison.preview;
       audio.play();
     }
     else if (jeison.status === 'error') {
-      document.getElementsByClassName('artist')[0].innerHTML = 'Not found';
-      document.getElementsByClassName('title')[0].innerHTML = 'Sorry';
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'Not found';
+      document.getElementsByClassName('title-result')[0].innerHTML = 'Sorry';
     }
     else {
-      document.getElementsByClassName('artist')[0].innerHTML = 'Sorry';
-      document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'Sorry';
+      document.getElementsByClassName('title-result')[0].innerHTML = ' I\'ve crashed';
     }
     socket.disconnect();
 }
