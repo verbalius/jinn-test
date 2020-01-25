@@ -370,10 +370,6 @@ function recordAudio () {
 }
 
 function startRecording() {
-  if (!record_permission) {
-    alert("Please, allow microphone first!");
-    return;
-  }
   recordButton.disabled = true;
   stopButton.disabled = false;
 
