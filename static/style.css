@@ -311,7 +311,7 @@ textarea {
   animation-iteration-count: infinite;
 }
 
-#album-preview{
+.album-preview{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
