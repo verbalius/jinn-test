@@ -16,11 +16,11 @@ var record_permission = false;
 window.onload = function () {
   recordButton = document.getElementById('record');
   stopButton = document.getElementById('stop');
-
-  // get audio stream from user's mic
+  alert('Hello, we are not spies, we only use your mic to record your humming')
   navigator.mediaDevices.getUserMedia({
     audio: true
   })
+  // get audio stream from user's mic
   .then(function (stream) {
     record_permission = true;
     recordButton.disabled = false;
@@ -56,7 +56,8 @@ function stopRecording() {
 }
 
 function onRecordingReady(e) {
-  var audio = document.getElementById('audio');
+  var audio = document.getElementById('preview');
+  var album = document,getElementsByClassName('album_img');
   // e.data contains a blob representing the recording
   var socket = io.connect('https://' + document.domain + ':' + location.port);             
   console.log(e.data);
@@ -70,42 +71,22 @@ function onRecordingReady(e) {
   };
   reader.readAsDataURL(blob);
   
-  socket.on('audio_results', function (res) {
-    var jzon = res;
+  socket.on('api_results', function (res) {
     var jeison = JSON.parse(res);
-    if (jzon.status === 'success') {
-      console.log('jzon');
-      if (typeof jzon.artist !== 'undefined')
-        document.getElementsByClassName('artist-result')[0].innerHTML = jzon.artist;
-      if (typeof jzon.title !== 'undefined')
-        document.getElementsByClassName('title-result')[0].innerHTML = jzon.title;
-      if (typeof jzon.album !== 'undefined')
-        document.getElementsByClassName('album-result')[0].innerHTML = jzon.album;
-    }
     else if (jeison.status === 'success') {
-      console.log('jeison');
-      if (typeof jeison.artist !== 'undefined')
-        document.getElementsByClassName('artist-result')[0].innerHTML = jeison.artist;
-      if (typeof jeison.title !== 'undefined')
-        document.getElementsByClassName('title-result')[0].innerHTML = jeison.title;
-      if (typeof jeison.album !== 'undefined')
-        document.getElementsByClassName('album-result')[0].innerHTML = jeison.album;
+      document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
+      document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
+      album_img.src = jeison.album;
+      audio.src = jeison.preview;
+      audio.play();
     }
-    else if (res.status === 'error') {
-      console.log('res');
-      document.getElementsByClassName('artist-result')[0].innerHTML = 'error';
-      document.getElementsByClassName('title-result')[0].innerHTML = 'error';
+    else if (jeison.status === 'error') {
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'Not found';
+      document.getElementsByClassName('title-result')[0].innerHTML = 'Sorry';
     }
     else {
-      document.getElementsByClassName('artist-result')[0].innerHTML = 'sorry';
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'Sorry';
       document.getElementsByClassName('title-result')[0].innerHTML = ' I\'ve crashed';
     }
-  });
-
-  socket.on('info', function (res) {
-    console.log(res);
-  });
-  
-  audio.src = URL.createObjectURL(e.data);
-  audio.play();
+    socket.disconnect();
 }

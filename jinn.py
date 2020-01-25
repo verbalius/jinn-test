@@ -30,13 +30,11 @@ def handle_audio(audio_blob_b64):
     my_data_file.close()
     os.chmod(file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IROTH)
     print('written audio to file')
-    emit('info', 'written audio to file')
+    emit('debug', '[+] Written audio to file')
     file_url = request.url_root+file_name
-    print(file_url)
     data_processed_from_api = get_data_from_audd_api(file_url, 'audio')
     processing_results_json = json.dumps(data_processed_from_api)
-    emit('info', processing_results_json)
-    emit('audio_results', processing_results_json)
+    emit('api_results', processing_results_json)
     os.remove(file_path)
 
 @socketio.on('lyrics')
@@ -44,7 +42,7 @@ def handle_lyric(lyrics):
     data_processed_from_api = get_data_from_audd_api(file_url, 'lyrics')
     processing_results_json = json.dumps(data_processed_from_api)
     emit('info', processing_results_json)
-    emit('lyrics_results', processing_results_json)
+    emit('api_results', processing_results_json)
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
@@ -72,17 +70,57 @@ def get_data_from_audd_api(file_url, mode):
     result = requests.post(api_endpoint, data=data)
     api_data = json.loads(result.text)
     if api_data['status'] != 'error':
-        useful_data = {
-            'status': 'success',
-            'artist': api_data['result']['list'][0]['artist'],
-            'title': api_data['result']['list'][0]['title']
-        }
+        deezer_data =  get_track_from_deezer(   api_data['result']['list'][0]['artist'],
+                                                api_data['result']['list'][0]['title'])
+        if deezer_data != None:
+            useful_data = {
+                'status': 'success',
+                'artist': api_data['result']['list'][0]['artist'],
+                'title': api_data['result']['list'][0]['title'],
+                'preview': deezer_data['preview'],
+                'album': deezer_data['album']
+            }
+        else:
+            useful_data = {
+                'status': 'success',
+                'artist': api_data['result']['list'][0]['artist'],
+                'title': api_data['result']['list'][0]['title'],
+                'preview': 'not found',
+                'album': 'not found'
+            }
     else:
         useful_data = {
-            'status' : 'error'
+            'status': 'error'
         }
-
     return useful_data
+
+def get_track_from_deezer(artist, title):
+    url = "https://api.deezer.com/search"
+
+    querystring = {"q":artist+' - '+title}
+
+    headers = {
+        'x-rapidapi-host': "api.deezer.com",
+        'x-rapidapi-key': "api_token"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    if response.status == 200:
+        result = requests.post(api_endpoint, data=data)
+        api_data = json.loads(result.text)
+        preview = api_data['data'][0]['preview']
+        album = api_data['data'][0]['album']['cover_medium']
+        links = {
+            'preview': preview, 
+            'album': album
+        }
+    else:
+        return None
+    return links
+
+@app.route('/easter_egg')
+def easter_egg():
+    return "ну вітаю, маладєц, шо скажеш, круто! умєєш, магьош"
 
 if __name__ == '__main__':
     socketio.run(app)
