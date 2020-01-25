@@ -4,7 +4,6 @@ jQuery(function($){
   $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
   $('#submit-lyrics').click(()=>{
-    var socket = io.connect();
     console.log('[+] Lyrics meta');
     socket.emit('lyrics', $('#lyrics-input').val());
   });
@@ -24,7 +23,40 @@ function toStep(num){
   });  
 }
 
-  
+// ------------------ socketio section ---------------------
+
+var socket;
+
+window.onload = function () {
+  socket = io.connect();
+
+socket.on('debug', function (res) {
+  console.log(res)
+});
+
+socket.on('api_results', function (res) {
+  console.log('[+] Raw data')
+  console.log(res)
+  var jeison = JSON.parse(res);
+  if (jeison.status === 'success') {
+    document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
+    document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
+    document.getElementById('album-preview').style.backgroundImage = "url('"+jeison.album+"')";
+    document.getElementById('audio-preview').src = jeison.preview;
+    document.getElementById('audio-preview').play();
+  }
+  else if (jeison.status === 'error') {
+    document.getElementsByClassName('artist-results')[0].innerHTML = 'Not found';
+    document.getElementsByClassName('title-results')[0].innerHTML = 'Sorry';
+  }
+  else {
+    document.getElementsByClassName('artist-results')[0].innerHTML = 'Sorry';
+    document.getElementsByClassName('title-results')[0].innerHTML = ' I\'ve crashed';
+  }
+  toStep(4);
+});
+
+// ------------------ socketio section ---------------------  
 
 var c = document.getElementById("myCanvas");
 
@@ -293,4 +325,63 @@ $(window).resize(function() {
   }
 });
 
+// ------------------ audio section ---------------------
 
+var recordButton, stopButton, recorder;
+var record_permission = false;
+
+function recordAudio () {
+  recordButton = document.getElementById('record');
+  stopButton = document.getElementById('stop');
+  navigator.mediaDevices.getUserMedia({
+    audio: true
+  })
+  // get audio stream from user's mic
+  .then(function (stream) {
+    record_permission = true;
+    recordButton.disabled = false;
+    recordButton.addEventListener('click', startRecording);
+    stopButton.addEventListener('click', stopRecording);
+    var options;
+    recorder = new MediaRecorder(stream); 
+    // listen to dataavailable, which gets triggered whenever we have
+    // an audio blob available
+    recorder.addEventListener('dataavailable', onRecordingReady);
+  }).catch(function(err) {
+    record_permission = false;
+  });
+};
+
+function startRecording() {
+  if (!record_permission) {
+    alert("Please, allow microphone first!");
+    return;
+  }
+  recordButton.disabled = true;
+  stopButton.disabled = false;
+
+  recorder.start();
+}
+
+function stopRecording() {
+  recordButton.disabled = false;
+  stopButton.disabled = true;
+
+  // Stopping the recorder will eventually trigger the `dataavailable` event and we can complete the recording process
+  recorder.stop();
+}
+
+function onRecordingReady(e) {
+  // e.data contains a blob representing the recording           
+  console.log('[+] Audio meta')
+  console.log(e.data);
+  
+  var blob = e.data;
+  var reader = new FileReader();
+  var base64data;
+  reader.onload = function () {
+    var b64 = reader.result.replace(/^data:.+;base64,/, '');
+    socket.emit('audio', b64);
+  };
+  reader.readAsDataURL(blob);
+}
