@@ -88,5 +88,5 @@ function onRecordingReady(e) {
       document.getElementsByClassName('artist-result')[0].innerHTML = 'Sorry';
       document.getElementsByClassName('title-result')[0].innerHTML = ' I\'ve crashed';
     }
-    socket.disconnect();
+  }
 }
