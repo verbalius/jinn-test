@@ -235,4 +235,36 @@ $(document).ready(function(){
     check_if_done = false;
     $("#record").click();
   });
+
+  if ($(window).width() <= 992) {
+    if (!$("#step5-window1").hasClass("banner")) {
+      $("#step5-window1").addClass("banner");
+    }
+
+    if($("#step5-window2").hasClass("banner")) {
+      $("#step5-window2").removeClass("banner");
+    }
+  }
+});
+
+
+$(window).resize(function() {
+  if ($(window).width() > 992) {
+    if (!$("#step5-window2").hasClass("banner")) {
+      $("#step5-window2").addClass("banner");
+    }
+
+    if($("#step5-window1").hasClass("banner")) {
+      $("#step5-window1").removeClass("banner");
+    }
+
+  } else {
+    if (!$("#step5-window1").hasClass("banner")) {
+      $("#step5-window1").addClass("banner");
+    }
+
+    if($("#step5-window2").hasClass("banner")) {
+      $("#step5-window2").removeClass("banner");
+    }
+  }
 });
