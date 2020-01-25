@@ -107,7 +107,7 @@ def get_track_from_deezer(artist, title):
 
     response = requests.request("GET", url, params=querystring)
     if response.status_code == 200:
-        result = requests.post(api_endpoint, data=data)
+        result = requests.post(url, data=data)
         api_data = json.loads(result.text)
         preview = api_data['data'][0]['preview']
         album = api_data['data'][0]['album']['cover_medium']
