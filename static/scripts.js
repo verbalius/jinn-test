@@ -29,6 +29,7 @@ var socket;
 
 window.onload = function () {
   socket = io.connect();
+}
 
 socket.on('debug', function (res) {
   console.log(res)
@@ -350,7 +351,7 @@ function recordAudio () {
   }).catch(function(err) {
     record_permission = false;
   });
-};
+}
 
 function startRecording() {
   if (!record_permission) {
