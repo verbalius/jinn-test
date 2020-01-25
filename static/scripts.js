@@ -7,7 +7,7 @@ jQuery(function($){
     socket.emit('lyrics', $('#lyrics-input').val());
     $('#loader').fadeIn(300);
   });
-  $('#submit-lyrics').click(()=>{
+  $('#done').click(()=>{
     $('#loader').fadeIn(300);
   });
   $('button#reset').click(()=>{$('button#reset').hide();});
@@ -349,7 +349,7 @@ var record_permission = false;
 
 function recordAudio () {
   recordButton = document.getElementById('record');
-  stopButton = document.getElementById('stop');
+  stopButton = document.getElementById('done');
   navigator.mediaDevices.getUserMedia({
     audio: true
   })
