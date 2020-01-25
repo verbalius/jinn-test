@@ -280,7 +280,7 @@ $(document).ready(function(){
   $("#done").hide();
 
   $("#record").click(function() {
-    if (record_permission===true) {
+    if (record_permission) {
       $(this).hide();
       $("#replay").hide();
       $("#done").hide();
@@ -293,6 +293,8 @@ $(document).ready(function(){
       run_timer();
     } else {
       alert("Please, allow microphone permission first!");
+      recordAudio();
+      $("#record").click();
     }
   });
 
@@ -365,7 +367,8 @@ function recordAudio () {
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
   }).catch(function(err) {
-    record_permission = false;
+    // record_permission = false;
+    alert('You denied access to your microphone!');
   });
 }
 
