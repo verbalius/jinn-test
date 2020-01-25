@@ -105,8 +105,8 @@ def get_track_from_deezer(artist, title):
 
     querystring = {"q":artist+' - '+title}
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    if response.status == 200:
+    response = requests.request("GET", url, params=querystring)
+    if response.status_code == 200:
         result = requests.post(api_endpoint, data=data)
         api_data = json.loads(result.text)
         preview = api_data['data'][0]['preview']
