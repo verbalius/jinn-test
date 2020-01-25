@@ -43,9 +43,6 @@ button:focus, button:active{
   outline: none;
 }
 button.circular{
-  position: fixed;
-  top: 20px;
-  right: 20px;
   background: -o-linear-gradient(60deg, #621AD3 13.39%, #E52372 86.61%);
   background: linear-gradient(30deg, #621AD3 13.39%, #E52372 86.61%);
   border: 1px solid #1D073D;
@@ -53,8 +50,14 @@ button.circular{
   width: 50px;
   height: 50px;
   display: block;
-  z-index: 1;
   text-align: center;
+  padding: 0;
+}
+button.circular#reset{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
   padding: 0;
 }
 button.circular#reset{
@@ -263,4 +266,28 @@ textarea {
 .robot-img {
   width: 100px;
   height: 84px;
+}
+
+
+#Step4 p{
+  margin: 6px 0;
+}
+
+#Step4 p.title-results{
+  margin-top: 0;
+  font-weight: bold;
+}
+#Step4 p.album-results{
+  opacity: 0.7
+}
+.result-btn{
+  margin: auto;
+  display: block;
+  border: none;
+}
+.result-btn.yes{
+  background-color: #621AD3
+}
+.result-btn.no{
+  background-color: #E52372
 }
