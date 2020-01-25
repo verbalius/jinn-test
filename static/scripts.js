@@ -24,12 +24,7 @@ function toStep(num){
 }
 
 // ------------------ socketio section ---------------------
-
-var socket;
-
-window.onload = function () {
-  socket = io.connect();
-}
+var socket = io.connect();
 
 socket.on('debug', function (res) {
   console.log(res)
