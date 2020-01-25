@@ -60,7 +60,7 @@ function onRecordingReady(e) {
   var album = document.getElementsByClassName('album_img');
   // e.data contains a blob representing the recording
   var socket = io.connect();             
-  console.log('[+] Sending audio')
+  console.log('[+] Audio meta')
   console.log(e.data);
   
   var blob = e.data;
@@ -77,6 +77,8 @@ function onRecordingReady(e) {
   });
 
   socket.on('api_results', function (res) {
+    console.log('[+] Raw data')
+    console.log(res)
     var jeison = JSON.parse(res);
     if (jeison.status === 'success') {
       document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;

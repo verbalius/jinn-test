@@ -30,11 +30,12 @@ def handle_audio(audio_blob_b64):
     my_data_file.close()
     os.chmod(file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IROTH)
     print('written audio to file')
-    emit('debug', '[+] Written audio to file')
+    emit('debug', '[+] Saved on server')
     file_url = request.url_root+file_name
     data_processed_from_api = get_data_from_audd_api(file_url, 'audio')
     processing_results_json = json.dumps(data_processed_from_api)
     emit('api_results', processing_results_json)
+    emit('debug', '[+] Processed')
     os.remove(file_path)
 
 @socketio.on('lyrics')
