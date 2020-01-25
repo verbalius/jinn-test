@@ -41,7 +41,8 @@ socket.on('api_results', function (res) {
   if (jeison.status === 'success') {
     $('.artist-results').text(jeison.artist);
     $('.title-results').text(jeison.title);
-    $('#album-preview').css('background-image', "url('"+jeison.album+"')");
+    $('.album-results').text(jeison.album);
+    $('.album-preview').css('background-image', "url('"+jeison.album+"')");
     $('#audio-preview').attr('src', jeison.preview);
     document.getElementById('audio-preview').play();
   }
