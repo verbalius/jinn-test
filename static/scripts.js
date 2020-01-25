@@ -15,11 +15,30 @@ jQuery(function($){
     recordAudio();
     toStep(31);
   });
+  $('.result-btn.yes').click(()=>{
+    toStep(51);
+  });
+  $('.result-btn.no').click(()=>{
+    toStep(52);
+  });
 });
+
+// Steps transition
 function toStep(num){
   let selector = '#Step'+num;
   $('.jinn-step.active').fadeOut(200, ()=>{
     $('.jinn-step.active').removeClass('active');
+
+    if (num===51) {
+      selector = '#Step5';
+      $('.result-renderer-lose').addClass('d-none');
+      $('.result-renderer-win').removeClass('d-none');
+    }
+    if (num===52) {
+      selector = '#Step5';
+      $('.result-renderer-win').addClass('d-none');
+      $('.result-renderer-lose').removeClass('d-none');
+    }
     $(selector).fadeIn(200, ()=>{
       $(selector).addClass('active');
       if ($('.jinn-step.active#Step1').length===0) {
