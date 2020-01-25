@@ -11,6 +11,7 @@
 // URL.createObjectURL -> to create a URL from a blob, which we can use as audio src
 
 var recordButton, stopButton, recorder;
+var record_permission = false;
 
 window.onload = function () {
   recordButton = document.getElementById('record');
@@ -21,18 +22,25 @@ window.onload = function () {
     audio: true
   })
   .then(function (stream) {
+    record_permission = true;
     recordButton.disabled = false;
     recordButton.addEventListener('click', startRecording);
     stopButton.addEventListener('click', stopRecording);
     var options;
-    recorder = new MediaRecorder(stream);
+    recorder = new MediaRecorder(stream); 
     // listen to dataavailable, which gets triggered whenever we have
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
+  }).catch(function(err) {
+    record_permission = false;
   });
 };
 
 function startRecording() {
+  if (!record_permission) {
+    alert("Please, allow microphone first!");
+    return;
+  }
   recordButton.disabled = true;
   stopButton.disabled = false;
 
