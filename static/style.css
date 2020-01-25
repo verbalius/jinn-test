@@ -309,3 +309,9 @@ textarea {
   animation-duration: 5s;
   animation-iteration-count: infinite;
 }
+
+#album-preview{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

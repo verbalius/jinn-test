@@ -126,7 +126,7 @@
     </div>
   </div>
 
-  <!-- Step 4 (Results) -->
+    <!-- Step 4 (Results) -->
   <div id="Step4" class="jinn-step render-container">
     <!-- Mobile version -->
     <div class="d-flex d-lg-none flex-column justify-content-start">
@@ -137,36 +137,68 @@
         </div>     
       </div>
       <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
-          <div class="d-flex flex-column banner-row-mob justify-content-center" style="width: 100%;">
-            <div class="row container-fluid align-items-center">
-              <div class="col-10">
-                <p class="title-results">Loading...</p>
-                <p class="artist-results"></p>
-              </div>
-              <div class="col-2" style="padding: 0;">
-                <button class="circular">
-                  <i class="material-icons">
-                  play_arrow
-                  </i>
-                </button>
-              </div>
+        <div class="d-flex flex-column banner-row-mob justify-content-center" style="width: 100%;">
+          <div class="row container-fluid align-items-center">
+            <div class="col-10">
+              <p class="title-results">Loading...</p>
+              <p class="artist-results"></p>
+              <p class="album-results"></p>
             </div>
-            <div class="row container-fluid align-items-center">
-              <div class="col-6">
-                <button class="result-btn yes">Yes</button>
-              </div>
-              <div class="col-6">
-                <button class="result-btn no">No</button>
-              </div>
-            
+            <div class="col-2" style="padding: 0;">
+              <button class="circular play-preview">
+                <i class="material-icons">
+                play_arrow
+                </i>
+              </button>
+            </div>
+          </div>
+          <div class="row container-fluid align-items-center">
+            <div class="col-6">
+              <button class="result-btn yes">Yes</button>
+            </div>
+            <div class="col-6">
+              <button class="result-btn no">No</button>
+            </div>
           </div>
           
         </div>  
       </div> 
     </div>
+    <!-- PC version -->
+    <div class="d-none d-lg-flex flex-column flex-lg-row justify-content-start justify-content-lg-stretch align-items-lg-stretch fullheight-kostyl">      
+      <img src="img/lines.svg" alt="jinn" class="jinn-divider d-none d-lg-block">
+      <img src="img/linesmob.svg" alt="jinn" class="jinn-divider-mob d-block d-lg-none">
+      <div class="banner col-12 col-lg-6 d-flex justify-content-center align-items-center">
+        <div class="row banner-row-mob align-items-center">
+          <div class="flex-column align-items-center justify-content-center">
+            <div id="album-preview" style="margin-bottom:20px;background-color: #621AD3;width: 400px;height: 400px;border-radius: 18px;"></div>
+            <button class="circular play-preview" style="margin:auto;">
+                  <i class="material-icons">
+                  play_arrow
+                  </i>
+                </button>
+          </div>
+        </div>
+    </div>
+      <div class="func-area col-12 col-lg-6 d-flex justify-content-center align-items-center">
+        <div class="banner-row-mob d-flex flex-column align-items-center justify-content-center pl-lg-5">
+          <p class="title-results">Loading...</p>
+          <p class="artist-results"></p>
+          <p class="album-results"></p>
+          <div class="row container-fluid align-items-center">
+            <div class="col-6">
+              <button class="result-btn yes">Yes</button>
+            </div>
+            <div class="col-6">
+              <button class="result-btn no">No</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+
 
   </div>
-
 
   <!-- Step 5 (the end) -->
   <div id="Step5" class="jinn-step render-container">
