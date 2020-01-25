@@ -1,7 +1,10 @@
 # JINN: jinn-test
 record audio to audd.io api
 
-## Run & Deploy
+Find the running project on heroku:
+https://jinn-test-task.herokuapp.com/
+
+## Prepare
 
 ### Set up virtual venv
 	
@@ -16,23 +19,20 @@ install requirements
 
 	(env)$ pip install -r requirements.txt
 
-## Run the the project
+## Run/Deploy the the project
 
-### Python way (can work as production)
+### Python way
 
+	(env)$ export AUDD_API=your_audd_api_key
+	(env)$ export FLASK_KEY=flask_encrypt_key
 	(env)$ python jinn.py
-
-### Flask way (DEBUG, not cool way)
-
-	(env)$ export FLASK_APP=jinn.py
-	(env)$ flask run
 
 ### Deploy heroku
 
-Environmental variables:
+Specify environmental variables:
 
 	AUDD_API and FLASK_KEY
 
-Procfile:
+Procfile content (for info, can be unchanged):
 
 	web: gunicorn --worker-class eventlet -w 1 jinn:app
