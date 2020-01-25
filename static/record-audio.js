@@ -82,7 +82,7 @@ function onRecordingReady(e) {
       document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
       document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
       document.getElementById('album-preview').style.backgroundImage = "url('"+jeison.album+"')";
-      document.getElementsById('audio-preview').src = jeison.preview;
+      document.getElementById('audio-preview').src = jeison.preview;
       audio.play();
     }
     else if (jeison.status === 'error') {
