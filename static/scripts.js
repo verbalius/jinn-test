@@ -280,7 +280,7 @@ $(document).ready(function(){
   $("#done").hide();
 
   $("#record").click(function() {
-    if (record_permission) {
+    if (record_permission===true) {
       $(this).hide();
       $("#replay").hide();
       $("#done").hide();
