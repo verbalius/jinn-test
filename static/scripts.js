@@ -1,7 +1,6 @@
 jQuery(function($){
 
   $('#tostep2').click(()=>{toStep(2);});
-  $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
   $('#submit-lyrics').click(()=>{
     console.log('[+] Lyrics meta');
@@ -12,7 +11,7 @@ jQuery(function($){
     $('#loader').fadeIn(300);
   });
   $('button#reset').click(()=>{$('button#reset').hide();});
-  $('.rec-audio').click(()=>{
+  $('.rec-audio, #tostep31').click(()=>{
     recordAudio();
     toStep(31);
   });
