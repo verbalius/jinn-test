@@ -3,6 +3,11 @@ jQuery(function($){
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
+  $('#submit-lyrics')click(()=>{
+    var socket = io.connect();
+    console.log('[+] Lyrics meta');
+    socket.emit('lyrics', $('#lyrics-input').val());
+  });
   $('button#reset').click(()=>{$('button#reset').hide();});
 
 });

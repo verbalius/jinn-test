@@ -93,5 +93,6 @@ function onRecordingReady(e) {
       document.getElementsByClassName('artist-results')[0].innerHTML = 'Sorry';
       document.getElementsByClassName('title-results')[0].innerHTML = ' I\'ve crashed';
     }
+    toStep(4);
   });
 }

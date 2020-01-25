@@ -78,7 +78,7 @@
 		<div class="func-area col-12 d-flex justify-content-center fullheight">
 			<div class="row"> 
 				<div class="status">
-					<p>Почнемо?</p>
+					<p>Ready?</p>
 				</div>
 				<div class="wave">
 					<canvas id="myCanvas">
@@ -93,7 +93,7 @@
 						<button id="stop"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 6h12v12H6z"/></svg></button>
 
 						<button id="replay"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg></button>
-						<button id="done" onclick="toStep(4);"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
+						<button id="done"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
 					</div>
 					<div class="row d-none">
 						<audio id="audio-preview" controls></audio>
@@ -107,10 +107,10 @@
   <div id="Step32" class="jinn-step render-container">
     <div class="func-area col-12 d-flex justify-content-center align-items-center fullheight">
       <div class="d-flex flex-column results justify-content-center align-items-center">
-        <p style="width: 100%; text-align: center; font-size: 24px; margin-top: 70px;">Введи текст пісні!</p>
-        <textarea></textarea>
+        <p style="width: 100%; text-align: center; font-size: 24px; margin-top: 70px;">Enter a few words from lyrics!</p>
+        <textarea id="lyrics-input"></textarea>
         <div class="d-flex justify-content-center record-div mt-5">
-          <button id="submit-lyrics" onclick="toStep(4);"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></button>
+          <button id="submit-lyrics"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></button>
         </div>
       </div>
     </div>
