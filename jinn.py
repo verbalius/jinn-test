@@ -61,12 +61,13 @@ def get_data_from_audd_api(mode, file_url='', lyrics=''):
             'api_token': os.environ['AUDD_API']
         }
         mode_extentsion = 'recognizeWithOffset/'
-    elif mode == 'lyircs':
+    elif mode == 'lyrics':
         data = {
             'q': lyrics,
             'api_token': os.environ['AUDD_API']
         }
         mode_extentsion = 'findLyrics/'
+    
     api_endpoint = 'https://api.audd.io/' + mode_extentsion
     result = requests.post(api_endpoint, data=data)
     api_data = json.loads(result.text)
