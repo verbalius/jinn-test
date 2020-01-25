@@ -40,7 +40,7 @@ def handle_audio(audio_blob_b64):
 
 @socketio.on('lyrics')
 def handle_lyric(lyrics):
-    data_processed_from_api = get_data_from_audd_api(file_url, 'lyrics')
+    data_processed_from_api = get_data_from_audd_api('lyrics')
     processing_results_json = json.dumps(data_processed_from_api)
     emit('info', processing_results_json)
     emit('api_results', processing_results_json)
@@ -53,7 +53,7 @@ def test_connect():
 def test_disconnect():
     print('Client disconnected')
 
-def get_data_from_audd_api(file_url, mode):
+def get_data_from_audd_api(file_url='', mode):
     if mode == 'audio':
         data = {
             'url': file_url,
@@ -71,28 +71,19 @@ def get_data_from_audd_api(file_url, mode):
     result = requests.post(api_endpoint, data=data)
     api_data = json.loads(result.text)
     if api_data['status'] != 'error':
-        deezer_data =  get_track_from_deezer(   api_data['result']['list'][0]['artist'],
-                                                api_data['result']['list'][0]['title'])
         emit('debug', '[+] Audd data')
         emit('debug', api_data)
+        deezer_data =  get_track_from_deezer(api_data['result']['list'][0]['artist'],
+                                             api_data['result']['list'][0]['title'])
         emit('debug', '[+] Deezer data')
         emit('debug', deezer_data)
-        if deezer_data != None:
-            useful_data = {
-                'status': 'success',
-                'artist': api_data['result']['list'][0]['artist'],
-                'title': api_data['result']['list'][0]['title'],
-                'preview': deezer_data['preview'],
-                'album': deezer_data['album']
-            }
-        else:
-            useful_data = {
-                'status': 'success',
-                'artist': api_data['result']['list'][0]['artist'],
-                'title': api_data['result']['list'][0]['title'],
-                'preview': 'not found',
-                'album': 'not found'
-            }
+        useful_data = {
+            'status': 'success',
+            'artist': api_data['result']['list'][0]['artist'],
+            'title': api_data['result']['list'][0]['title'],
+            'preview': deezer_data['preview'],
+            'album': deezer_data['album']
+        }
     else:
         useful_data = {
             'status': 'error'
@@ -115,7 +106,10 @@ def get_track_from_deezer(artist, title):
             'album': album
         }
     else:
-        return None
+        links = {
+            'preview': 'not found', 
+            'album': 'not found'
+        }
     return links
 
 @app.route('/easter_egg')
