@@ -92,7 +92,7 @@ def get_data_from_audd_api(mode, file_url='', lyrics=''):
                 return useful_data
             deezer_data =  get_track_from_deezer(api_data['result']['list'][0]['artist'],
                                                  api_data['result']['list'][0]['title'])
-            artist = api_data['result']['list'][0]['title']
+            artist = api_data['result']['list'][0]['artist']
             title = api_data['result']['list'][0]['title']
         emit('debug', '[+] Deezer data')
         emit('debug', deezer_data)
