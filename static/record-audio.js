@@ -73,9 +73,6 @@ function onRecordingReady(e) {
   socket.on('debug', function (res) {
     console.log(res)
   });
-
-  var audio = 
-  var album = ;
   
   socket.on('api_results', function (res) {
     console.log('[+] Raw data')
@@ -84,7 +81,7 @@ function onRecordingReady(e) {
     if (jeison.status === 'success') {
       document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
       document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
-      document.getElementById('album-preview').attr('src') = jeison.album;
+      document.getElementById('album-preview').style.backgroundImage = "url('"+jeison.album+"')";
       document.getElementsById('audio-preview').src = jeison.preview;
       audio.play();
     }
