@@ -1,8 +1,10 @@
 jQuery(function($){
+
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep31').click(()=>{toStep(31);});
   $('#tostep32').click(()=>{toStep(32);});
   $('button#reset').click(()=>{$('button#reset').hide();});
+
 });
 function toStep(num){
   let selector = '#Step'+num;
@@ -213,7 +215,7 @@ $(document).ready(function(){
 
       draw_waves(60);
 
-      $(".status").find("p").text("Слухаю...");
+      $(".status").find("p").text("Listening...");
 
       run_timer();
     } else {
@@ -223,7 +225,7 @@ $(document).ready(function(){
 
   $("#stop").click(function() {
     $(this).hide();
-    $(".status").find("p").text("Готово!");
+    $(".status").find("p").text("Done!");
     $("#replay").show();
     $("#done").show();
     check_if_done = true;
