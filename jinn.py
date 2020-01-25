@@ -32,7 +32,7 @@ def handle_audio(audio_blob_b64):
     print('written audio to file')
     emit('debug', '[+] Saved on server')
     file_url = request.url_root+file_name
-    data_processed_from_api = get_data_from_audd_api(file_url, 'audio')
+    data_processed_from_api = get_data_from_audd_api('audio', file_url=file_url)
     processing_results_json = json.dumps(data_processed_from_api)
     emit('api_results', processing_results_json)
     emit('debug', '[+] Processed')
@@ -40,7 +40,7 @@ def handle_audio(audio_blob_b64):
 
 @socketio.on('lyrics')
 def handle_lyric(lyrics):
-    data_processed_from_api = get_data_from_audd_api('lyrics')
+    data_processed_from_api = get_data_from_audd_api('lyrics', lyrics=lyrics)
     processing_results_json = json.dumps(data_processed_from_api)
     emit('info', processing_results_json)
     emit('api_results', processing_results_json)
@@ -53,7 +53,7 @@ def test_connect():
 def test_disconnect():
     print('Client disconnected')
 
-def get_data_from_audd_api(file_url='', mode):
+def get_data_from_audd_api(mode, file_url='', lyrics=''):
     if mode == 'audio':
         data = {
             'url': file_url,
