@@ -71,6 +71,10 @@ function onRecordingReady(e) {
   };
   reader.readAsDataURL(blob);
   
+  socket.on('debug', function (res) {
+    console.log(res)
+  });
+
   socket.on('api_results', function (res) {
     var jeison = JSON.parse(res);
     if (jeison.status === 'success') {

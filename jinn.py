@@ -72,6 +72,10 @@ def get_data_from_audd_api(file_url, mode):
     if api_data['status'] != 'error':
         deezer_data =  get_track_from_deezer(   api_data['result']['list'][0]['artist'],
                                                 api_data['result']['list'][0]['title'])
+        emit('debug', '[+] Audd data')
+        emit('debug', api_data)
+        emit('debug', '[+] Deezer data')
+        emit('debug', deezer_data)
         if deezer_data != None:
             useful_data = {
                 'status': 'success',
@@ -92,17 +96,13 @@ def get_data_from_audd_api(file_url, mode):
         useful_data = {
             'status': 'error'
         }
+        emit('debug', '[x] Error Audd')
     return useful_data
 
 def get_track_from_deezer(artist, title):
     url = "https://api.deezer.com/search"
 
     querystring = {"q":artist+' - '+title}
-
-    headers = {
-        'x-rapidapi-host': "api.deezer.com",
-        'x-rapidapi-key': "api_token"
-    }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     if response.status == 200:
