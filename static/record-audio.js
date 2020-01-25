@@ -75,22 +75,30 @@ function onRecordingReady(e) {
     var jeison = JSON.parse(res);
     if (jzon.status === 'success') {
       console.log('jzon');
-      document.getElementsByClassName('artist')[0].innerHTML = jzon.artist;
-      document.getElementsByClassName('title')[0].innerHTML = jzon.title;
+      if (typeof jzon.artist !== 'undefined')
+        document.getElementsByClassName('artist-result')[0].innerHTML = jzon.artist;
+      if (typeof jzon.title !== 'undefined')
+        document.getElementsByClassName('title-result')[0].innerHTML = jzon.title;
+      if (typeof jzon.album !== 'undefined')
+        document.getElementsByClassName('album-result')[0].innerHTML = jzon.album;
     }
     else if (jeison.status === 'success') {
       console.log('jeison');
-      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
-      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
+      if (typeof jeison.artist !== 'undefined')
+        document.getElementsByClassName('artist-result')[0].innerHTML = jeison.artist;
+      if (typeof jeison.title !== 'undefined')
+        document.getElementsByClassName('title-result')[0].innerHTML = jeison.title;
+      if (typeof jeison.album !== 'undefined')
+        document.getElementsByClassName('album-result')[0].innerHTML = jeison.album;
     }
     else if (res.status === 'error') {
       console.log('res');
-      document.getElementsByClassName('artist')[0].innerHTML = 'error';
-      document.getElementsByClassName('title')[0].innerHTML = 'error';
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'error';
+      document.getElementsByClassName('title-result')[0].innerHTML = 'error';
     }
     else {
-      document.getElementsByClassName('artist')[0].innerHTML = 'sorry';
-      document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
+      document.getElementsByClassName('artist-result')[0].innerHTML = 'sorry';
+      document.getElementsByClassName('title-result')[0].innerHTML = ' I\'ve crashed';
     }
   });
 

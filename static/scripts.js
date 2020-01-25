@@ -5,37 +5,6 @@ jQuery(function($){
   $('#tostep32').click(()=>{toStep(32);});
   $('button#reset').click(()=>{$('button#reset').hide();});
 
-  // Handle Results from API
-  socket.on('info', function (res) {
-    var jzon = res;
-    var jeison = JSON.parse(res);
-    if (jzon.status === 'success') {
-      console.log('jzon');
-      if (typeof jzon.artist !== 'undefined')
-        $('.artist-result').text(jzon.artist);
-      if (typeof jzon.title !== 'undefined')
-        $('.title-result').text(jzon.title);
-    }
-    else if (jeison.status === 'success') {
-      console.log('jeison');
-      if (typeof jeison.artist !== 'undefined')
-        $('.artist-result').text(jeison.artist);
-      if (typeof jeison.title !== 'undefined')
-        $('.title-result').text(jeison.title);
-      if (typeof jeison.album !== 'undefined')
-        $('.album-result').text(jeison.title);
-    }
-    else if (res.status === 'error') {
-      console.log('res');
-      $('.artist-result').text('error');
-      $('.title').text('error');
-    }
-    else {
-      $('.artist-result').text('sorry');
-      $('.title-result').text(' I\'ve crashed');
-    }
-  });
-
 });
 function toStep(num){
   let selector = '#Step'+num;
