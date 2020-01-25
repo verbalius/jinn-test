@@ -205,16 +205,20 @@ $(document).ready(function(){
   $("#done").hide();
 
   $("#record").click(function() {
-    $(this).hide();
-    $("#replay").hide();
-    $("#done").hide();
-    $("#stop").show();
+    if (record_permission) {
+      $(this).hide();
+      $("#replay").hide();
+      $("#done").hide();
+      $("#stop").show();
 
-    draw_waves(60);
+      draw_waves(60);
 
-    $(".status").find("p").text("Слухаю...");
+      $(".status").find("p").text("Слухаю...");
 
-    run_timer();
+      run_timer();
+    } else {
+      alert("Please, allow microphone permission first!");
+    }
   });
 
   $("#stop").click(function() {
