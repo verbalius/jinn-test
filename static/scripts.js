@@ -6,6 +6,10 @@ jQuery(function($){
   $('#submit-lyrics').click(()=>{
     console.log('[+] Lyrics meta');
     socket.emit('lyrics', $('#lyrics-input').val());
+    $('#loader').fadeIn(300);
+  });
+  $('#submit-lyrics').click(()=>{
+    $('#loader').fadeIn(300);
   });
   $('button#reset').click(()=>{$('button#reset').hide();});
 
@@ -49,6 +53,7 @@ socket.on('api_results', function (res) {
     document.getElementsByClassName('artist-results')[0].innerHTML = 'Sorry';
     document.getElementsByClassName('title-results')[0].innerHTML = ' I\'ve crashed';
   }
+  $('#loader').fadeOut(300);
   toStep(4);
 });
 
@@ -248,11 +253,6 @@ async function run_loader_text() {
 run_loader_text();
 
 $(document).ready(function(){
-  // for preloader
-   setTimeout(function(){
-        $('#loader').fadeOut(300);
-    }, 5000);
-
 
   $("#stop").hide();
   $("#replay").hide();
