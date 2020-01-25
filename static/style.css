@@ -178,7 +178,7 @@ h1.branding{
   position: absolute;
   top: 20vh;
   left: 0;
-  height: 60vh;
+  height: 50vh;
   width: 100%;
   background-color: transparent;
 }
@@ -191,15 +191,15 @@ h1.branding{
 .record-div {
   position: absolute;
   top: 70vh;
-  left: 40%;
-  width: 20%;
+  left: 0;
+  width: 100%;  
 }
 
 .record-div button {
   border-radius: 50%;
   width: 68px;
   height: 68px;
-  margin: 0px 30px;
+  margin: 0px 40px;
   border: 1px solid #1D073D;
   background: linear-gradient(#E52372, #621AD3);
   box-shadow: 0 0 20px rgba(98,26,211, .6); 
