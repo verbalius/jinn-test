@@ -81,19 +81,19 @@ function onRecordingReady(e) {
     console.log(res)
     var jeison = JSON.parse(res);
     if (jeison.status === 'success') {
-      document.getElementsByClassName('artist-results')[0].innerHTML = jeison.artist;
-      document.getElementsByClassName('title-results')[0].innerHTML = jeison.title;
+      document.getElementsByClassName('artist')[0].innerHTML = jeison.artist;
+      document.getElementsByClassName('title')[0].innerHTML = jeison.title;
       album_img.src = jeison.album;
       audio.src = jeison.preview;
       audio.play();
     }
     else if (jeison.status === 'error') {
-      document.getElementsByClassName('artist-result')[0].innerHTML = 'Not found';
-      document.getElementsByClassName('title-result')[0].innerHTML = 'Sorry';
+      document.getElementsByClassName('artist')[0].innerHTML = 'Not found';
+      document.getElementsByClassName('title')[0].innerHTML = 'Sorry';
     }
     else {
-      document.getElementsByClassName('artist-result')[0].innerHTML = 'Sorry';
-      document.getElementsByClassName('title-result')[0].innerHTML = ' I\'ve crashed';
+      document.getElementsByClassName('artist')[0].innerHTML = 'Sorry';
+      document.getElementsByClassName('title')[0].innerHTML = ' I\'ve crashed';
     }
   });
 }
