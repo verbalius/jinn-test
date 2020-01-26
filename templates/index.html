@@ -16,10 +16,10 @@
   <script type="text/javascript">
     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
       console.log('Safari detected');
-      var s = document.createElement("script");
-      s.type = "text/javascript";
-      s.src = "safari-fix.js";
-      $("head").append(s);
+      var iphonefixes = document.createElement("script");
+      iphonefixes.type = "text/javascript";
+      iphonefixes.src = "safari-fix.js";
+      document.getElementsByTagName('head')[0].appendChild(iphonefixes);
     }
   </script>
 </head>
