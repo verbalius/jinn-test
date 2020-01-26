@@ -358,11 +358,16 @@ function recordAudio () {
   }).then(function (stream) {
     console.log('WE HERE');
     record_permission = true;
+    console.log('WE HERE2');
     recordButton.disabled = false;
+    console.log('WE HERE3');
     recordButton.addEventListener('click', startRecording);
     stopButton.addEventListener('click', stopRecording);
+    console.log('WE HERE4');
     var options;
-    recorder = new MediaRecorder(stream); 
+    console.log('WE HERE');
+    recorder = new MediaRecorder(stream);
+    console.log('WE HERE5'); 
     // listen to dataavailable, which gets triggered whenever we have
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
