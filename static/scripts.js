@@ -13,6 +13,7 @@ jQuery(function($){
   $('button#reset').click(()=>{$('button#reset').hide();});
   $('.rec-audio, #tostep31').click(()=>{
     recordAudio();
+    console.log('calling RecordAudio()');
     toStep(31);
   });
   $('.result-btn.yes').click(()=>{
@@ -348,11 +349,14 @@ var recordButton, stopButton, recorder;
 var record_permission = false;
 
 function recordAudio () {
+  console.log('called RecordAudio()');
   recordButton = document.getElementById('record');
   stopButton = document.getElementById('done');
+  console.log('calling getmedia');
   navigator.mediaDevices.getUserMedia({
     audio: true
   }).then(function (stream) {
+    console.log('WE HERE');
     record_permission = true;
     recordButton.disabled = false;
     recordButton.addEventListener('click', startRecording);
@@ -363,6 +367,7 @@ function recordAudio () {
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
   }).catch(function(err) {
+    console.log('Something went wrong');
     record_permission = false;
   });
 }
