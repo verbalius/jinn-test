@@ -352,9 +352,7 @@ function recordAudio () {
   stopButton = document.getElementById('done');
   navigator.mediaDevices.getUserMedia({
     audio: true
-  })
-  // get audio stream from user's mic
-  .then(function (stream) {
+  }).then(function (stream) {
     record_permission = true;
     recordButton.disabled = false;
     recordButton.addEventListener('click', startRecording);
