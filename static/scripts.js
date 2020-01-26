@@ -366,6 +366,7 @@ function recordAudio () {
     // listen to dataavailable, which gets triggered whenever we have
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
+    console.log('gotchu bitch');
   }).catch(function(err) {
     console.log('Something went wrong');
     record_permission = false;
