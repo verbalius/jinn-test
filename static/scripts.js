@@ -1,5 +1,8 @@
 jQuery(function($){
-
+  // first we fix the iphones...
+  if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+    $('body').append('<script src ="safari-fix.js"></script>');
+  }
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep32').click(()=>{toStep(32);});
   $('#submit-lyrics').click(()=>{
@@ -352,26 +355,18 @@ function recordAudio () {
   console.log('called RecordAudio()');
   recordButton = document.getElementById('record');
   stopButton = document.getElementById('done');
-  console.log('calling getmedia');
   navigator.mediaDevices.getUserMedia({
     audio: true
   }).then(function (stream) {
-    console.log('WE HERE');
     record_permission = true;
-    console.log('WE HERE2');
     recordButton.disabled = false;
-    console.log('WE HERE3');
     recordButton.addEventListener('click', startRecording);
     stopButton.addEventListener('click', stopRecording);
-    console.log('WE HERE4');
     var options;
-    console.log('WE HERE');
-    recorder = new MediaRecorder(stream);
-    console.log('WE HERE5'); 
+    recorder = new MediaRecorder(stream); 
     // listen to dataavailable, which gets triggered whenever we have
     // an audio blob available
     recorder.addEventListener('dataavailable', onRecordingReady);
-    console.log('gotchu bitch');
   }).catch(function(err) {
     console.log('Something went wrong');
     record_permission = false;
