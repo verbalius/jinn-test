@@ -12,6 +12,16 @@
       rel="stylesheet">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- iPhone fix -->
+  <script type="text/javascript">
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+      console.log('Safari detected');
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = "safari-fix.js";
+      $("head").append(s);
+    }
+  </script>
 </head>
 <body>
   <div id="loader">

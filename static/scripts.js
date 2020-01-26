@@ -1,8 +1,4 @@
 jQuery(function($){
-  // first we fix the iphones...
-  if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-    $('body').append('<script src ="safari-fix.js"></script>');
-  }
   $('#tostep2').click(()=>{toStep(2);});
   $('#tostep32').click(()=>{toStep(32);});
   $('#submit-lyrics').click(()=>{
